@@ -51,9 +51,9 @@
             </svg>
           </a>
 
-          <ul class="dropdown-menu dropdown-menu-lg-end">
-            <li><a class="dropdown-item" href="#">Đăng nhập</a></li>
-            <li><a class="dropdown-item" href="#">Đăng ký</a></li>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="login.html">Đăng nhập</a></li>
+            <li><a class="dropdown-item" href="register.html">Đăng ký</a></li>
             <li>
               <a class="dropdown-item" href="#">Cho thuê chỗ ở qua Airbnb</a>
             </li>
@@ -65,9 +65,9 @@
   </header>
   <main>
     <section class="container d-flex justify-content-center my-5">
-      <div class="col-6 p-4 border border-secondary-subtle rounded-3">
+      <div class="col-12 col-sm-10 col-md-9 col-xl-6 p-4 border border-secondary-subtle rounded-3">
         <h3 class="text-center">Đăng nhập</h3>
-        <form class="d-flex flex-column g-3">
+        <form id="login-form" class="d-flex flex-column g-3">
           <strong class="my-4 fs-4">Chào mừng bạn đến với Airbnb</strong>
           <div class="input-box d-flex flex-column mb-3">
             <label for="email-user">Email:</label>
@@ -95,7 +95,8 @@
     </section>
   </main>
   <footer class="border border-top-1">
-    <div class="container d-flex gap-5 py-5 border border-bottom-1 border-top-0 border-start-0 border-end-0">
+    <div
+      class="container d-flex flex-column flex-md-row gap-5 py-5 border border-bottom-1 border-top-0 border-start-0 border-end-0">
       <section class="flex-fill">
         <h4>Hỗ trợ</h4>
         <div class="d-flex flex-column gap-3">
@@ -135,31 +136,41 @@
         </div>
       </section>
     </div>
-    <div class="container d-flex justify-content-between mt-3">
-      <p class="d-flex gap-2 align-items-center">
-        <i class="fa-regular fa-copyright"></i>
-        <span>2023 Airbnb,Inc.</span>
-        <i style="font-size: 5px" class="fa-solid fa-circle"></i>
-        <a class="custom-a" href="">Quyền riêng tư</a>
-        <i style="font-size: 5px" class="fa-solid fa-circle"></i><a class="custom-a" href="">Điều khoản</a>
-        <i style="font-size: 5px" class="fa-solid fa-circle"></i>
-        <a class="custom-a" href="">Sơ đồ trang web</a>
-      </p>
-      <div class="d-flex gap-3">
+    <div class="container d-flex flex-column flex-md-row justify-content-between py-4 gap-3">
+      <div class="d-flex flex-column flex-lg-row gap-3">
+        <div class="d-flex align-items-center gap-1">
+          <i class="fa-regular fa-copyright"></i>
+          <span>2023 Airbnb,Inc.</span>
+        </div>
+        <div class="d-flex align-items-center gap-1">
+          <i style="font-size: 5px" class="fa-solid fa-circle"></i>
+          <a class="custom-a" href="">Quyền riêng tư</a>
+        </div>
+        <div class="d-flex align-items-center gap-1">
+          <i style="font-size: 5px" class="fa-solid fa-circle"></i><a class="custom-a" href="">Điều khoản</a>
+        </div>
+        <div class="d-flex align-items-center gap-1">
+          <i style="font-size: 5px" class="fa-solid fa-circle"></i>
+          <a class="custom-a" href="">Sơ đồ trang web</a>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-sm-row gap-3">
         <span class=""><i class="fa-solid fa-globe me-2"></i><a class="custom-a" href="">Tiếng Việt (VN)</a></span>
         <span>
           <i class="fa-solid fa-dollar-sign me-2"></i>
           <a href="" class="custom-a">USD</a>
         </span>
-        <span>
-          <a href="" class="custom-a"><i class="fa-brands fa-square-facebook"></i></a>
-        </span>
-        <span>
-          <a href="" class="custom-a"><i class="fa-brands fa-square-twitter"></i></a>
-        </span>
-        <span>
-          <a href="" class="custom-a"><i class="fa-brands fa-square-instagram"></i></a>
-        </span>
+        <div class="d-flex gap-3 ">
+          <span>
+            <a href="" class="custom-a"><i class="fa-brands fa-square-facebook"></i></a>
+          </span>
+          <span>
+            <a href="" class="custom-a"><i class="fa-brands fa-square-twitter"></i></a>
+          </span>
+          <span>
+            <a href="" class="custom-a"><i class="fa-brands fa-square-instagram"></i></a>
+          </span>
+        </div>
       </div>
     </div>
   </footer>
@@ -169,6 +180,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
     integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
     crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+    integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./js/login.js"></script>
 </body>
 
 </html>

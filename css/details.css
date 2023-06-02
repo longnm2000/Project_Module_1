@@ -15,7 +15,6 @@ header {
     border: 1px solid #eaeaea;
 }
 
-
 .user-icon>a {
     width: 80px;
     display: flex;
@@ -53,4 +52,12 @@ footer {
 
 .custom-a:hover {
     text-decoration: underline;
+}
+
+
+.select-customer li input {
+    width: 30px;
+    border: none;
+    background-color: white;
+    text-align: center;
 }
