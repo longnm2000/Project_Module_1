@@ -40,3 +40,37 @@ header ul li:last-child {
     border-radius: 50%;
     padding: 0 4px;
 }
+
+.category img {
+    width: 30px !important;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.category {
+    text-align: center;
+}
+
+.category p {
+    margin-bottom: 0;
+}
+
+/* .category>div>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+} */
+
+/* Các thẻ tiêu đề của card không dài hơn 1 dòng */
+.single-line,
+.category p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.active-item {
+    border-bottom: 2px solid red;
+}
