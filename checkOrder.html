@@ -62,23 +62,44 @@
                 <h3>Chuyến đi của bạn</h3>
                 <br>
                 <h5>Ngày</h5>
-                <p id="time-homestay">Ngày 15 - Ngày 21 tháng 6</p>
+                <p id="time-homestay"></p>
                 <h5>Khách</h5>
                 <p id="tourists">1 khách</p>
                 <hr>
                 <h4>Thanh toán bằng thẻ ghi nợ</h4>
-                <form action="">
-                    <label for="number-card">Số thẻ</label>
-                    <input type="text" name="numbercard" id="number-card">
-                    <label for="expiration"></label>
-                    <input type="text">
-                    <label for="cvv">CVV</label>
-                    <input type="text" name="cvv" id="cvv">
-                    <label for="zipcode">Mã bưu chính</label>
-                    <input type="text" name="zipcode" id="zip-code">
-                    <label for="country">Quốc gia</label>
-                    <input type="text" name="country" id="country">
-                </form>
+                <div id="card-form">
+                    <div class="mb-3">
+                        <label class="form-label" for="number-card">Số thẻ</label>
+                        <input class="form-control" type="text" name="numbercard" id="number-card"
+                            placeholder="0000 0000 0000 ">
+                        <p id="number-card-error" class="text-bg-warning p-1"></p>
+                    </div>
+                    <div class="mb-3">
+                        <div>
+                            <label class="form-label" for="expiration">Ngày hết hạn</label>
+                            <input id="expiration" name="expiration" class="form-control" type="text"
+                                placeholder="MM/YY">
+                            <p id="expiration-error" class="text-bg-warning p-1"></p>
+                        </div>
+
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="cvv">CVV</label>
+                        <input class="form-control" type="text" name="cvv" id="cvv" placeholder="CVV">
+                        <p id="cvv-error" class="text-bg-warning p-1"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="zipcode">Mã bưu chính</label>
+                        <input class="form-control" type="text" name="zipcode" id="zip-code">
+                        <p id="zip-code-error" class="text-bg-warning p-1"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="country">Quốc gia</label>
+                        <input class="form-control" type="text" name="country" id="country" value="Việt Nam">
+                        <p id="country-error" class="text-bg-warning p-1"></p>
+                    </div>
+
+                </div>
                 <hr>
                 <h4>Quy chuẩn chung</h4>
                 <p>Chúng tôi yêu cầu tất cả khách phải ghi nhớ một số quy chuẩn đơn giản để làm một vị khách tuyệt vời.
@@ -87,7 +108,7 @@
                     <li>Tuân thủ nội quy nhà</li>
                     <li>Giữ gìn ngôi nhà như thể đó là nhà bạn</li>
                 </ul>
-                <button class="btn btn-primary">Xác nhận và thanh toán</button>
+                <button id="submit-btn" class="btn btn-primary">Xác nhận và thanh toán</button>
                 <!-- <hr />
                 <h3>Đăng nhập để đặt phòng/ đặt chỗ</h3>
                 <form class="d-flex flex-column g-3">
@@ -116,12 +137,12 @@
                 </div> -->
             </section>
             <section id="info-homestay" class="border rounded-3 p-3">
-                <h3 id="homestay-name"></h3>
+                <h3 id="homestay-name" class="text-centerkeyValuePairs["></h3>
                 <img id="homestay-image" src="" alt="">
                 <h4 class="pt-3">Tổng số tiền cần thanh toán </h4>
                 <div class="d-flex justify-content-between">
                     <p id="date"></p>
-                    <p id="payment-cost">dawdwa</p>
+                    <p id="payment-cost"></p>
                 </div>
             </section>
         </div>

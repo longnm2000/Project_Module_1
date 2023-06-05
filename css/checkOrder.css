@@ -66,5 +66,15 @@ footer {
     max-width: 100%;
     min-height: 200px;
     max-height: 300px;
-    object-fit: contain;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+}
+
+#number-card-error,
+#expiration-error,
+#cvv-error,
+#zip-code-error,
+#country-error {
+    display: none;
 }

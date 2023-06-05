@@ -271,7 +271,7 @@ formOrder.addEventListener("submit", (e) => {
   }
   console.log(errors);
   if (errors == 0) {
-    location.href = `/checkOrder.html?homestay_id=${id}&check_in=${formOrder.begindate.value}&check_out=${formOrder.enddate.value}&adults=${person.value}&childrens=${child.value}&baby=${baby.value}&pets=${petInput.value}`;
+    location.href = `/checkOrder.html?homestay_id=${id}&check_in=${formOrder.begindate.value}&check_out=${formOrder.enddate.value}&adults=${person.value}&childrens=${child.value}&babys=${baby.value}&pets=${petInput.value}`;
   }
 });
 
