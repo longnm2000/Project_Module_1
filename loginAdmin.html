@@ -5,102 +5,48 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/register.css" />
+    <link rel="stylesheet" href="./css/loginAdmin.css" />
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/836/PNG/512/Airbnb_icon-icons.com_66791.png"
         type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-    <title>Đăng ký</title>
+    <title>Đăng nhập Admin</title>
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container py-2">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="/index.html">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
                         alt="" />
                 </a>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav ms-auto mb-2 me-3 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Cho thuê chỗ ở qua Airbnb</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-globe"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="user-icon dropdown dropdown-box border rounded-5">
-                    <button id="title-drop-down" class=" btn dropdown-toggle border-1 rounded-5" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-bars me-3"></i>
-                        <i class=" fa-solid fa-user"></i>
-                    </button>
 
-                    <ul id="dropdown-menu-content" class="dropdown-menu dropdown-menu-end ">
-                        <li><a class="dropdown-item" href="/login.html">Đăng nhập</a></li>
-                        <li><a class="dropdown-item" href="/register.html">Đăng ký</a></li>
-                        <li>
-                            <a class="dropdown-item" href="">Cho thuê chỗ ở qua Airbnb</a>
-                        </li>
-                        <li><a class="dropdown-item" href="">Trợ giúp</a></li>
-                    </ul>
-                </div>
             </div>
         </nav>
     </header>
     <main>
         <section class="container d-flex justify-content-center my-5">
             <div class="col-12 col-sm-10 col-md-9 col-xl-6 p-4 border border-secondary-subtle rounded-3">
-                <h3 class="text-center">Đăng ký</h3>
-                <form id="register-form" class="d-flex flex-column g-3">
-                    <strong class="my-4 fs-4">Chào mừng bạn đến với Airbnb</strong>
-                    <div class="input-box d-flex flex-column mb-3">
-                        <label class="form-label" for="name-user">Họ tên:</label>
-                        <input type="text" name="name" id="name-user" class="form-control mb-2" />
-                        <p role="alert" class=" alert alert-danger name-error"></p>
-                    </div>
+                <h3 class="text-center">Đăng nhập Admin</h3>
+                <form id="login-form" class="d-flex flex-column g-3">
                     <div class="input-box d-flex flex-column mb-3">
                         <label class="form-label" for="email-user">Email:</label>
-                        <input type="text" name="email" id="email-user" class="form-control mb-2" />
-                        <p role="alert" class="alert alert-danger email-error"></p>
-                    </div>
-                    <div class="input-box d-flex flex-column mb-3">
-                        <label class="form-label" for="phone-user">Phone:</label>
-                        <input type="text" name="phone" id="phone-user" class="form-control mb-2" />
-                        <p role="alert" class="alert alert-danger phone-error"></p>
+                        <input type="text" name="email" id="email-user" class="form-control" />
                     </div>
                     <div class="input-box d-flex flex-column mb-3">
                         <label class="form-label" for="email-password">Password:</label>
-                        <input type="password" name="password" id="email-password" class="form-control mb-2" />
-                        <p role="alert" class="alert alert-danger password-error"></p>
+                        <input type="password" name="password" id="email-password" class="form-control" />
                     </div>
-                    <div class="input-box d-flex flex-column mb-3">
-                        <label class="form-label" for="email-repassword">Xác nhận Password:</label>
-                        <input type="password" name="repassword" id="email-repassword" class="form-control mb-2" />
-                        <p role="alert" class="alert alert-danger repassword-error"></p>
-                    </div>
-                    <button class="btn btn-primary">Đăng Ký</button>
+                    <button class="btn btn-primary">Đăng Nhập</button>
                 </form>
-                <p class="text-center mt-3">Hoặc</p>
-                <div class="d-flex flex-column gap-3">
-                    <button class="btn border-1 border-secondary rounded-3">
-                        Tiếp tục với Facebook
-                    </button>
-                    <button class="btn border-1 border-secondary rounded-3">
-                        Tiếp tục với Google
-                    </button>
-                    <button class="btn border-1 border-secondary rounded-3">
-                        Tiếp tục với Apple
-                    </button>
-                </div>
+
             </div>
         </section>
     </main>
-    <footer class="border border-top-1">
+    <!-- <footer class="border border-top-1">
         <div
             class="container d-flex flex-column flex-md-row gap-5 py-5 border border-bottom-1 border-top-0 border-start-0 border-end-0">
             <section class="flex-fill">
@@ -180,7 +126,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
@@ -190,7 +136,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
         integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./js/register.js"></script>
+    <script src="./js/loginAdmin.js"></script>
 </body>
 
 </html>

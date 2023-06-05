@@ -4,6 +4,10 @@ const baby = document.getElementById("baby-number");
 const petInput = document.getElementById("pet-input");
 const child = document.getElementById("child-number");
 const formOrder = document.getElementById("form-order");
+const titleWeb = document.getElementsByTagName("title")[0];
+
+const titleDropdown = document.getElementById("title-drop-down");
+const menuContent = document.getElementById("dropdown-menu-content");
 
 const homestayOwner = document.getElementById("homestay-owner");
 const homestayName = document.getElementById("homestay-name");
@@ -173,6 +177,7 @@ if (post) {
   homestayUtilities.innerText = `${post.tourists} khách, ${post.bedrooms} phòng ngủ, ${post.bathrooms} phòng tắm`;
   homestayContent.innerText = post.content;
   totalPrice.innerHTML = `$ ${post.pricePerDay * post.minday}`;
+  titleWeb.innerHTML = `${post.name}`;
   img1.src = post.images[0];
   img2.src = post.images[1];
   img3.src = post.images[2];
@@ -258,15 +263,28 @@ formOrder.addEventListener("submit", (e) => {
   // Chuyển đổi milliseconds thành số ngày
   let daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
   if (!formOrder.begindate.value || !formOrder.enddate.value) {
-    alert("Nhập ngày bắt đầu và ngày kết thúc đầy đủ");
+    swal({
+      title: "Nhập ngày bắt đầu và ngày kết thúc đầy đủ",
+      icon: "warning",
+      timer: 2000,
+    });
     errors++;
   }
   if (daysDiff < post.minday) {
-    alert(`Số ngày nhỏ nhất là ${post.minday}`);
+    swal({
+      title: `Số đêm được chọn nhỏ nhất là ${post.minday}`,
+      icon: "warning",
+      timer: 2000,
+    });
     errors++;
   }
   if (Number(child.value) + Number(person.value) > post.tourists) {
-    alert(`Số người lớn và trẻ em không lớn hơn ${post.tourists}`);
+    swal({
+      title: `Số người lớn cộng số trẻ em không lớn hơn ${post.tourists}`,
+      icon: "warning",
+      timer: 2000,
+    });
+
     errors++;
   }
   console.log(errors);
@@ -288,3 +306,26 @@ formOrder.addEventListener("change", (e) => {
   let daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
   totalPrice.textContent = `$ ${daysDiff * post.pricePerDay}`;
 });
+
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+if (currentUser != null) {
+  let firstword = currentUser.name.split(" ")[0];
+  titleDropdown.innerHTML = `<i class="fa-solid fa-bars me-3"></i> Hi ${firstword}`;
+  menuContent.innerHTML = `
+  <li id="remove-current-user"><a class="dropdown-item" href="/index.html">Đăng xuất</a></li>
+  <li><a class="dropdown-item" href="/history.html">Lịch sử đặt phòng</a></li>
+  <li><a class="dropdown-item" href="/profile.html">Thông tin cá nhân</a></li>
+  <li>
+      <a class="dropdown-item" href="">Cho thuê chỗ ở qua Airbnb</a>
+  </li>
+  <li><a class="dropdown-item" href="">Trợ giúp</a></li>
+  
+  `;
+  const removeCurrent = document.getElementById("remove-current-user");
+  console.log(removeCurrent);
+
+  removeCurrent.addEventListener("click", () => {
+    localStorage.removeItem("currentUser");
+  });
+}

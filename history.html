@@ -24,7 +24,7 @@
                         alt="" />
                 </a>
                 <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav ms-auto mb-2 me-3 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Cho thuê chỗ ở qua Airbnb</a>
                         </li>
@@ -33,32 +33,63 @@
                         </li>
                     </ul>
                 </div>
-                <div class="user-icon dropdown">
-                    <a class="dropdown-box btn dropdown-toggle dropdown-toggle-icon" href="#" role="button"
+                <div class="user-icon dropdown dropdown-box border rounded-5">
+                    <button id="title-drop-down" class=" btn dropdown-toggle border-1 rounded-5" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-bars"></i>
+                        <i class="fa-solid fa-bars me-3"></i>
                         <i class=" fa-solid fa-user"></i>
+                    </button>
 
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="login.html">Đăng nhập</a></li>
-                        <li><a class="dropdown-item" href="register.html">Đăng ký</a></li>
+                    <ul id="dropdown-menu-content" class="dropdown-menu dropdown-menu-end ">
+                        <li><a class="dropdown-item" href="/login.html">Đăng nhập</a></li>
+                        <li><a class="dropdown-item" href="/register.html">Đăng ký</a></li>
                         <li>
-                            <a class="dropdown-item" href="#">Cho thuê chỗ ở qua Airbnb</a>
+                            <a class="dropdown-item" href="">Cho thuê chỗ ở qua Airbnb</a>
                         </li>
-                        <li><a class="dropdown-item" href="#">Trợ giúp</a></li>
+                        <li><a class="dropdown-item" href="">Trợ giúp</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
     <main class="container py-5">
-        <h3>Chuyến đi</h3>
+        <h3>Đã đặt phòng</h3>
         <hr>
-        <strong>Chưa có chuyến đi nào được đặt... vẫn chưa!</strong>
-        <p>Đã đến lúc phủi bụi hành lý và bắt đầu chuẩn bị cho chuyến phiêu lưu tiếp theo của bạn rồi</p>
-        <button class="btn btn-primary">Trang chủ</button>
+        <div class="box">
+            <table id="personal-order">
+                <thead>
+                    <tr>
+                        <th>Homestay</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                        <th>Người lớn</th>
+                        <th>Trẻ em</td>
+                        <th>Em bé</th>
+                        <th>Thú nuôi</th>
+                        <th>Giá</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <br>
+        <h3>Chuyến đi đã hoàn thành</h3>
+        <hr>
+        <div class="box">
+            <table id="personal-complete-order">
+                <thead>
+                    <tr>
+                        <th>Homestay</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                        <th>Người lớn</th>
+                        <th>Trẻ em</td>
+                        <th>Em bé</th>
+                        <th>Thú nuôi</th>
+                        <th>Giá</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </main>
     <footer class="border border-top-1">
         <div class="container d-flex gap-5 py-5 border border-bottom-1 border-top-0 border-start-0 border-end-0">
@@ -136,6 +167,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
         integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/history.js"></script>
 </body>
 
 </html>

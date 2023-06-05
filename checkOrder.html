@@ -34,21 +34,20 @@
                         </li>
                     </ul>
                 </div>
-                <div class="user-icon dropdown">
-                    <a class="dropdown-box btn dropdown-toggle dropdown-toggle-icon" href="#" role="button"
+                <div class="user-icon dropdown dropdown-box border rounded-5">
+                    <button id="title-drop-down" class=" btn dropdown-toggle border-1 rounded-5" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-bars"></i>
+                        <i class="fa-solid fa-bars me-3"></i>
                         <i class=" fa-solid fa-user"></i>
+                    </button>
 
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="login.html">Đăng nhập</a></li>
-                        <li><a class="dropdown-item" href="register.html">Đăng ký</a></li>
+                    <ul id="dropdown-menu-content" class="dropdown-menu dropdown-menu-end ">
+                        <li><a class="dropdown-item" href="/login.html">Đăng nhập</a></li>
+                        <li><a class="dropdown-item" href="/register.html">Đăng ký</a></li>
                         <li>
-                            <a class="dropdown-item" href="#">Cho thuê chỗ ở qua Airbnb</a>
+                            <a class="dropdown-item" href="">Cho thuê chỗ ở qua Airbnb</a>
                         </li>
-                        <li><a class="dropdown-item" href="#">Trợ giúp</a></li>
+                        <li><a class="dropdown-item" href="">Trợ giúp</a></li>
                     </ul>
                 </div>
             </div>
@@ -70,33 +69,33 @@
                 <div id="card-form">
                     <div class="mb-3">
                         <label class="form-label" for="number-card">Số thẻ</label>
-                        <input class="form-control" type="text" name="numbercard" id="number-card"
+                        <input class="form-control mb-2" type="text" name="numbercard" id="number-card"
                             placeholder="0000 0000 0000 ">
-                        <p id="number-card-error" class="text-bg-warning p-1"></p>
+                        <p role="alert" id="number-card-error" class="alert alert-danger"></p>
                     </div>
                     <div class="mb-3">
                         <div>
                             <label class="form-label" for="expiration">Ngày hết hạn</label>
-                            <input id="expiration" name="expiration" class="form-control" type="text"
+                            <input id="expiration" name="expiration" class="mb-2 form-control" type="text"
                                 placeholder="MM/YY">
-                            <p id="expiration-error" class="text-bg-warning p-1"></p>
+                            <p role="alert" id="expiration-error" class="alert alert-danger"></p>
                         </div>
 
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="cvv">CVV</label>
-                        <input class="form-control" type="text" name="cvv" id="cvv" placeholder="CVV">
-                        <p id="cvv-error" class="text-bg-warning p-1"></p>
+                        <input class="form-control mb-2" type="text" name="cvv" id="cvv" placeholder="000">
+                        <p role="alert" id="cvv-error" class="alert alert-danger "></p>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="zipcode">Mã bưu chính</label>
-                        <input class="form-control" type="text" name="zipcode" id="zip-code">
-                        <p id="zip-code-error" class="text-bg-warning p-1"></p>
+                        <input class="form-control mb-2" type="text" name="zipcode" id="zip-code">
+                        <p role="alert" id="zip-code-error" class="alert alert-danger"></p>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="country">Quốc gia</label>
-                        <input class="form-control" type="text" name="country" id="country" value="Việt Nam">
-                        <p id="country-error" class="text-bg-warning p-1"></p>
+                        <input class="form-control mb-2" type="text" name="country" id="country" value="Việt Nam">
+                        <p role="alert" id="country-error" class="alert alert-danger"></p>
                     </div>
 
                 </div>
@@ -194,6 +193,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
         integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./js/checkOrder.js"></script>
 </body>
 

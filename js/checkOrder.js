@@ -1,3 +1,6 @@
+const titleDropdown = document.getElementById("title-drop-down");
+const menuContent = document.getElementById("dropdown-menu-content");
+
 const homestayName = document.getElementById("homestay-name");
 const homestayImage = document.getElementById("homestay-image");
 const dateDistance = document.getElementById("date");
@@ -18,6 +21,7 @@ const countryError = document.getElementById("country-error");
 
 let homestays = JSON.parse(localStorage.getItem("homestays"));
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+let orders = JSON.parse(localStorage.getItem("orders"));
 
 // Lấy URL từ địa chỉ hiện tại
 var url = window.location.href;
@@ -144,7 +148,7 @@ numberCard.addEventListener("blur", () => {
   console.log(isValidVisa(numberCard.value));
   if (!isValidVisa(numberCard.value)) {
     numberCardError.style.display = "block";
-    numberCardError.textContent = "Mã số thẻ không hợp lệ";
+    numberCardError.textContent = "Mã số thẻ gồm 12 chữ số bắt đầu bằng 4";
     isnumberCardError = true;
   } else {
     numberCardError.style.display = "none";
@@ -167,7 +171,7 @@ expiration.addEventListener("blur", () => {
 cvv.addEventListener("blur", () => {
   if (!validateVisaCVV(cvv.value)) {
     cvvError.style.display = "block";
-    cvvError.textContent = "CVV không hợp lệ";
+    cvvError.textContent = "CVV phải gồm 3 chữ số";
     isCvvError = true;
   } else {
     cvvError.style.display = "none";
@@ -178,44 +182,90 @@ cvv.addEventListener("blur", () => {
 zipCode.addEventListener("blur", () => {
   if (!validateVisaZipCode(zipCode.value)) {
     zipCodeError.style.display = "block";
-    zipCodeError.textContent = "CVV không hợp lệ";
+    zipCodeError.textContent = "Mã bưu chính phải gồm 6 chữ số";
   } else {
     zipCodeError.style.display = "none";
   }
 });
 
 submitBtn.addEventListener("click", () => {
-  if (country.value == "") {
-    countryError.textContent = "Không được để trống";
-    countryError.style.display = "block";
-  } else {
-    countryError.style.display = "none";
-    if (
-      !isnumberCardError &&
-      !isCvvError &&
-      !isExpirationError &&
-      !isZipCodeError
-    ) {
-      let orderedHomestay = {
-        userId: currentUser.id,
-        homstayId: post.id,
-        checkIn: keyValuePairs["check_in"],
-        checkOut: keyValuePairs["check_out"],
-        adults: keyValuePairs["adults"],
-        childrens: keyValuePairs["childrens"],
-        babys: keyValuePairs["babys"],
-        pets: keyValuePairs["pets"],
-        cardNumber: numberCard.value,
-        expiration: expiration.value,
-        cvv: cvv.value,
-        zipCode: zipCode.value,
-        country: country.value,
-        price: daysDiff * post.pricePerDay,
-        isComplete: false,
-      };
-      console.log(orderedHomestay);
+  if (currentUser != null) {
+    if (country.value == "") {
+      countryError.textContent = "Không được để trống";
+      countryError.style.display = "block";
+    } else {
+      countryError.style.display = "none";
+      if (
+        !isnumberCardError &&
+        !isCvvError &&
+        !isExpirationError &&
+        !isZipCodeError &&
+        numberCard.value != "" &&
+        expiration.value != "" &&
+        cvv.value != "" &&
+        zipCode.value != ""
+      ) {
+        let orderedHomestay = {
+          userId: currentUser.id,
+          homestayId: post.id,
+          checkIn: keyValuePairs["check_in"],
+          checkOut: keyValuePairs["check_out"],
+          adults: keyValuePairs["adults"],
+          childrens: keyValuePairs["childrens"],
+          babys: keyValuePairs["babys"],
+          pets: keyValuePairs["pets"],
+          cardNumber: numberCard.value,
+          expiration: expiration.value,
+          cvv: cvv.value,
+          zipCode: zipCode.value,
+          country: country.value,
+          price: daysDiff * post.pricePerDay,
+          isComplete: false,
+        };
+        console.log(orderedHomestay);
+        orders.push(orderedHomestay);
+        localStorage.setItem("orders", JSON.stringify(orders));
+        swal({
+          title: "Bạn đã đặt phòng thành công! Tự động chuyển về trang chủ",
+          icon: "success",
+          timer: 3000,
+        });
+        location.href = "/index.html";
+      } else {
+        swal({
+          title: "Thông tin nhập vào chưa chính xác",
+          icon: "error",
+          timer: 2000,
+        });
+      }
     }
+  } else {
+    swal({
+      title: "Bạn cần đăng nhập để có thể đặt phòng",
+      icon: "warning",
+      timer: 2000,
+    });
   }
 });
 
 // localStorage.setItem("orders", JSON.stringify("[{userId: 1,homestayId:}]"));
+
+if (currentUser != null) {
+  let firstword = currentUser.name.split(" ")[0];
+  titleDropdown.innerHTML = `<i class="fa-solid fa-bars me-3"></i> Hi ${firstword}`;
+  menuContent.innerHTML = `
+  <li id="remove-current-user"><a class="dropdown-item" href="/index.html">Đăng xuất</a></li>
+  <li><a class="dropdown-item" href="/history.html">Lịch sử đặt phòng</a></li>
+  <li><a class="dropdown-item" href="/profile.html">Thông tin cá nhân</a></li>
+  <li>
+      <a class="dropdown-item" href="">Cho thuê chỗ ở qua Airbnb</a>
+  </li>
+  <li><a class="dropdown-item" href="">Trợ giúp</a></li>
+  
+  `;
+  const removeCurrent = document.getElementById("remove-current-user");
+
+  removeCurrent.addEventListener("click", () => {
+    localStorage.removeItem("currentUser");
+  });
+}

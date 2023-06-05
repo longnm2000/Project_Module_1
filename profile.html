@@ -5,23 +5,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="./css/details.css" />
-
+    <link rel="stylesheet" href="./css/profile.css" />
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/836/PNG/512/Airbnb_icon-icons.com_66791.png"
         type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-    <title></title>
+    <title>Profile</title>
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container py-2">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="/index.html">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
                         alt="" />
                 </a>
@@ -54,120 +52,25 @@
             </div>
         </nav>
     </header>
-    <main class="container py-5">
-        <h2 id="homestay-name"></h2>
-        <p id="homestay-address"></p>
-        <section class="image-box">
-            <div class="row">
-                <div class="col-12 col-md-6 p-1">
-                    <img style="height: 100%;" id="image-details-1" width="100%" style="object-fit: cover;" src=""
-                        alt="" />
-                </div>
-                <div class="col-6 d-none d-md-block">
-                    <div class="row">
-                        <div class="col-6 p-1"><img style="height: 100%;" id="image-details-2" width="100%" src=""
-                                alt="" /></div>
-                        <div class="col-6 p-1"><img style="height: 100%;" id="image-details-3" width="100%" src=""
-                                alt="" /></div>
+    <main>
+        <section class="container d-flex justify-content-center my-5">
+            <div class="col-12 col-sm-10 col-md-9 col-xl-6 p-4 border border-secondary-subtle rounded-3">
+                <h3 class="text-center">Thông tin các nhân của bạn</h3>
+                <form id="profile-form" class="d-flex flex-column g-3">
+                    <div class="input-box d-flex flex-column mb-3">
+                        <label class="form-label" for="user-name">Email:</label>
+                        <input readonly type="text" name="name" id="user-name" class="form-control" />
                     </div>
-                    <div class="row">
-                        <div class="col-6 p-1"><img style="height: 100%;" id="image-details-4" width="100%" src=""
-                                alt="" /></div>
-                        <div class="col-6 p-1"><img style="height: 100%;" id="image-details-5" width="100%" src=""
-                                alt="" /></div>
+                    <div class="input-box d-flex flex-column mb-3">
+                        <label class="form-label" for="user-email">Email:</label>
+                        <input readonly type="text" name="email" id="user-email" class="form-control" />
                     </div>
-                </div>
-            </div>
-        </section>
-        <section class="d-flex gap-4 mt-4 flex-column-reverse flex-lg-row">
-            <div>
-                <strong id="homestay-owner" class="fs-2"></strong>
-                <p id="utilities"></p>
-                <hr>
-                <h4 class="mt-2">Giới thiệu về chỗ ở này</h4>
-                <p id="homestay-content" class="text-start"></p>
+                    <div class="input-box d-flex flex-column mb-3">
+                        <label class="form-label" for="user-number">Số điện thoại:</label>
+                        <input readonly type="text" name="number" id="user-number" class="form-control" />
+                    </div>
+                </form>
 
-            </div>
-            <div>
-                <div class="border p-3 position-sticky top-0 rounded">
-                    <strong id="total-price" class="fs-2"></strong>
-                    <p>Tổng trước thuế</p>
-                    <form id="form-order" action="">
-                        <div class="d-flex gap-3 flex-column flex-md-row justify-content-md-center">
-                            <div>
-                                <label for="begin-date">Nhận phòng</label>
-                                <input class="form-control" type="date" name="begindate" id="begin-date">
-                            </div>
-                            <div>
-                                <label for="end-date">Trả phòng</label>
-                                <input class="form-control" type="date" name="enddate" id="end-date">
-                            </div>
-                        </div>
-                        <div>
-                            <div class="btn-group w-100 mt-3 chooose-customer ">
-                                <button type="button" class="btn border dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    1 khách
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end w-100 select-customer number-buttons">
-                                    <li class="d-flex justify-content-between align-items-center px-3">
-                                        <div>
-                                            <strong>Người lớn</strong>
-                                            <p>Từ 13 tuổi trở lên</p>
-                                        </div>
-                                        <div>
-                                            <button
-                                                class="px-3 btn border rounded-circle btn-light subtraction">-</button>
-                                            <input disabled type="text" value="1" name="adult" id="adult-input"
-                                                readonly>
-                                            <button class="btn border rounded-circle btn-light summation">+</button>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex justify-content-between align-items-center px-3">
-                                        <div>
-                                            <strong>Trẻ em</strong>
-                                            <p>Độ tuổi từ 2 - 12</p>
-                                        </div>
-                                        <div>
-                                            <button
-                                                class=" px-3 btn border rounded-circle btn-light subtraction">-</button>
-                                            <input disabled type="text" value="0" name="childnumber" id="child-number"
-                                                readonly>
-                                            <button class=" btn border rounded-circle btn-light summation">+</button>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex justify-content-between align-items-center px-3">
-                                        <div>
-                                            <strong>Em bé</strong>
-                                            <p>Dưới 2 tuổi</p>
-                                        </div>
-                                        <div>
-                                            <button
-                                                class="px-3 btn border rounded-circle btn-light subtraction">-</button>
-                                            <input disabled type="text" value="0" name="babynumber" id="baby-number"
-                                                readonly>
-                                            <button class="btn border rounded-circle btn-light summation">+</button>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex justify-content-between align-items-center px-3">
-                                        <div>
-                                            <strong>Thú cưng</strong>
-                                            <p>Động vật</p>
-                                        </div>
-                                        <div>
-                                            <button
-                                                class="px-3 btn border rounded-circle btn-light subtraction">-</button>
-                                            <input disabled type="text" value="0" name="petnumber" id="pet-input"
-                                                readonly>
-                                            <button class="btn border rounded-circle btn-light summation">+</button>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <input class="w-100 btn btn-primary mt-3" type="submit" value="Đặt phòng">
-                    </form>
-                </div>
             </div>
         </section>
     </main>
@@ -261,7 +164,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
         integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./js/details.js"></script>
+    <script src="./js/profile.js"></script>
 </body>
 
 </html>

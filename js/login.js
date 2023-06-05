@@ -127,4 +127,3 @@ loginForm.addEventListener("submit", (e) => {
     });
   }
 });
-console.log(users);
