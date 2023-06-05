@@ -44,3 +44,11 @@ header ul li:last-child {
 footer {
     background: #f7f7f7;
 }
+
+.dropdown-box {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.dropdown-toggle::after {
+    content: none !important;
+}

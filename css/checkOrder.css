@@ -53,3 +53,18 @@ footer {
 .custom-a:hover {
     text-decoration: underline;
 }
+
+.dropdown-box {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.dropdown-toggle::after {
+    content: none !important;
+}
+
+#info-homestay img {
+    max-width: 100%;
+    min-height: 200px;
+    max-height: 300px;
+    object-fit: contain;
+}

@@ -20,7 +20,7 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container py-2">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="/index.html">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
                         alt="" />
                 </a>
@@ -35,25 +35,16 @@
                     </ul>
                 </div>
                 <div class="user-icon dropdown">
-                    <a class="btn btn-secondary dropdown-toggle dropdown-toggle-icon" href="#" role="button"
+                    <a class="dropdown-box btn dropdown-toggle dropdown-toggle-icon" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-bars"></i>
-                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                            role="presentation" focusable="false" style="
-                  display: block;
-                  height: 100%;
-                  width: 100%;
-                  fill: currentcolor;
-                ">
-                            <path
-                                d="m16 .7c-8.437 0-15.3 6.863-15.3 15.3s6.863 15.3 15.3 15.3 15.3-6.863 15.3-15.3-6.863-15.3-15.3-15.3zm0 28c-4.021 0-7.605-1.884-9.933-4.81a12.425 12.425 0 0 1 6.451-4.4 6.507 6.507 0 0 1 -3.018-5.49c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5a6.513 6.513 0 0 1 -3.019 5.491 12.42 12.42 0 0 1 6.452 4.4c-2.328 2.925-5.912 4.809-9.933 4.809z">
-                            </path>
-                        </svg>
+                        <i class=" fa-solid fa-user"></i>
+
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Đăng nhập</a></li>
-                        <li><a class="dropdown-item" href="#">Đăng ký</a></li>
+                        <li><a class="dropdown-item" href="login.html">Đăng nhập</a></li>
+                        <li><a class="dropdown-item" href="register.html">Đăng ký</a></li>
                         <li>
                             <a class="dropdown-item" href="#">Cho thuê chỗ ở qua Airbnb</a>
                         </li>
@@ -63,16 +54,41 @@
             </div>
         </nav>
     </header>
-    <main class="container">
-        <div class="d-flex flex-column flex-column-reverse flex-md-row justify-content-lg-between py-5">
+    <main class="container text-start">
+        <div class="gap-3 d-flex flex-column flex-column-reverse flex-md-row justify-content-lg-between py-5">
             <section>
                 <h2>Xác nhận và thanh toán</h2>
+                <hr>
                 <h3>Chuyến đi của bạn</h3>
-                <p>Ngày</p>
-                <p>Ngày 15 - Ngày 21 tháng 6</p>
-                <p>Khách</p>
-                <p>1 khách</p>
-                <hr />
+                <br>
+                <h5>Ngày</h5>
+                <p id="time-homestay">Ngày 15 - Ngày 21 tháng 6</p>
+                <h5>Khách</h5>
+                <p id="tourists">1 khách</p>
+                <hr>
+                <h4>Thanh toán bằng thẻ ghi nợ</h4>
+                <form action="">
+                    <label for="number-card">Số thẻ</label>
+                    <input type="text" name="numbercard" id="number-card">
+                    <label for="expiration"></label>
+                    <input type="text">
+                    <label for="cvv">CVV</label>
+                    <input type="text" name="cvv" id="cvv">
+                    <label for="zipcode">Mã bưu chính</label>
+                    <input type="text" name="zipcode" id="zip-code">
+                    <label for="country">Quốc gia</label>
+                    <input type="text" name="country" id="country">
+                </form>
+                <hr>
+                <h4>Quy chuẩn chung</h4>
+                <p>Chúng tôi yêu cầu tất cả khách phải ghi nhớ một số quy chuẩn đơn giản để làm một vị khách tuyệt vời.
+                </p>
+                <ul>
+                    <li>Tuân thủ nội quy nhà</li>
+                    <li>Giữ gìn ngôi nhà như thể đó là nhà bạn</li>
+                </ul>
+                <button class="btn btn-primary">Xác nhận và thanh toán</button>
+                <!-- <hr />
                 <h3>Đăng nhập để đặt phòng/ đặt chỗ</h3>
                 <form class="d-flex flex-column g-3">
 
@@ -97,60 +113,68 @@
                     <button class="btn border-1 border-secondary rounded-3">
                         Tiếp tục với Apple
                     </button>
-                </div>
+                </div> -->
             </section>
-            <section>
-                <h3>VILLA VENTINY Sky</h3>
-                <h4>Tổng số tiền cần thanh toán: $7.412,4</h4>
+            <section id="info-homestay" class="border rounded-3 p-3">
+                <h3 id="homestay-name"></h3>
+                <img id="homestay-image" src="" alt="">
+                <h4 class="pt-3">Tổng số tiền cần thanh toán </h4>
+                <div class="d-flex justify-content-between">
+                    <p id="date"></p>
+                    <p id="payment-cost">dawdwa</p>
+                </div>
             </section>
         </div>
     </main>
+    <footer class="border border-top-1">
+
+        <div class="container d-flex flex-column flex-md-row justify-content-between py-4 gap-3">
+            <div class="d-flex flex-column flex-lg-row gap-3">
+                <div class="d-flex align-items-center gap-1">
+                    <i class="fa-regular fa-copyright"></i>
+                    <span>2023 Airbnb,Inc.</span>
+                </div>
+                <div class="d-flex align-items-center gap-1">
+                    <i style="font-size: 5px" class="fa-solid fa-circle"></i>
+                    <a class="custom-a" href="">Quyền riêng tư</a>
+                </div>
+                <div class="d-flex align-items-center gap-1">
+                    <i style="font-size: 5px" class="fa-solid fa-circle"></i><a class="custom-a" href="">Điều khoản</a>
+                </div>
+                <div class="d-flex align-items-center gap-1">
+                    <i style="font-size: 5px" class="fa-solid fa-circle"></i>
+                    <a class="custom-a" href="">Sơ đồ trang web</a>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-sm-row gap-3">
+                <span class=""><i class="fa-solid fa-globe me-2"></i><a class="custom-a" href="">Tiếng Việt
+                        (VN)</a></span>
+                <span>
+                    <i class="fa-solid fa-dollar-sign me-2"></i>
+                    <a href="" class="custom-a">USD</a>
+                </span>
+                <div class="d-flex gap-3 ">
+                    <span>
+                        <a href="" class="custom-a"><i class="fa-brands fa-square-facebook"></i></a>
+                    </span>
+                    <span>
+                        <a href="" class="custom-a"><i class="fa-brands fa-square-twitter"></i></a>
+                    </span>
+                    <span>
+                        <a href="" class="custom-a"><i class="fa-brands fa-square-instagram"></i></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
         integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
         crossorigin="anonymous"></script>
+    <script src="./js/checkOrder.js"></script>
 </body>
-<footer class="border border-top-1">
 
-    <div class="container d-flex flex-column flex-md-row justify-content-between py-4 gap-3">
-        <div class="d-flex flex-column flex-lg-row gap-3">
-            <div class="d-flex align-items-center gap-1">
-                <i class="fa-regular fa-copyright"></i>
-                <span>2023 Airbnb,Inc.</span>
-            </div>
-            <div class="d-flex align-items-center gap-1">
-                <i style="font-size: 5px" class="fa-solid fa-circle"></i>
-                <a class="custom-a" href="">Quyền riêng tư</a>
-            </div>
-            <div class="d-flex align-items-center gap-1">
-                <i style="font-size: 5px" class="fa-solid fa-circle"></i><a class="custom-a" href="">Điều khoản</a>
-            </div>
-            <div class="d-flex align-items-center gap-1">
-                <i style="font-size: 5px" class="fa-solid fa-circle"></i>
-                <a class="custom-a" href="">Sơ đồ trang web</a>
-            </div>
-        </div>
-        <div class="d-flex flex-column flex-sm-row gap-3">
-            <span class=""><i class="fa-solid fa-globe me-2"></i><a class="custom-a" href="">Tiếng Việt (VN)</a></span>
-            <span>
-                <i class="fa-solid fa-dollar-sign me-2"></i>
-                <a href="" class="custom-a">USD</a>
-            </span>
-            <div class="d-flex gap-3 ">
-                <span>
-                    <a href="" class="custom-a"><i class="fa-brands fa-square-facebook"></i></a>
-                </span>
-                <span>
-                    <a href="" class="custom-a"><i class="fa-brands fa-square-twitter"></i></a>
-                </span>
-                <span>
-                    <a href="" class="custom-a"><i class="fa-brands fa-square-instagram"></i></a>
-                </span>
-            </div>
-        </div>
-    </div>
-</footer>
 
 </html>

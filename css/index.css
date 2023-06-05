@@ -74,3 +74,11 @@ header ul li:last-child {
 .active-item {
     border-bottom: 2px solid red;
 }
+
+.dropdown-toggle::after {
+    content: none !important;
+}
+
+.dropdown-box {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

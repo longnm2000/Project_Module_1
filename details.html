@@ -36,25 +36,16 @@
                     </ul>
                 </div>
                 <div class="user-icon dropdown">
-                    <a class="btn btn-secondary dropdown-toggle dropdown-toggle-icon" href="#" role="button"
+                    <a class="dropdown-box btn dropdown-toggle dropdown-toggle-icon" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-bars"></i>
-                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                            role="presentation" focusable="false" style="
-                  display: block;
-                  height: 100%;
-                  width: 100%;
-                  fill: currentcolor;
-                ">
-                            <path
-                                d="m16 .7c-8.437 0-15.3 6.863-15.3 15.3s6.863 15.3 15.3 15.3 15.3-6.863 15.3-15.3-6.863-15.3-15.3-15.3zm0 28c-4.021 0-7.605-1.884-9.933-4.81a12.425 12.425 0 0 1 6.451-4.4 6.507 6.507 0 0 1 -3.018-5.49c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5a6.513 6.513 0 0 1 -3.019 5.491 12.42 12.42 0 0 1 6.452 4.4c-2.328 2.925-5.912 4.809-9.933 4.809z">
-                            </path>
-                        </svg>
+                        <i class=" fa-solid fa-user"></i>
+
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Đăng nhập</a></li>
-                        <li><a class="dropdown-item" href="#">Đăng ký</a></li>
+                        <li><a class="dropdown-item" href="login.html">Đăng nhập</a></li>
+                        <li><a class="dropdown-item" href="register.html">Đăng ký</a></li>
                         <li>
                             <a class="dropdown-item" href="#">Cho thuê chỗ ở qua Airbnb</a>
                         </li>
@@ -76,18 +67,18 @@
                 </div>
                 <div class="col-6 d-none d-md-block">
                     <div class="row">
-                        <div class="col-6 p-1"><img id="image-details-2" width="100%"
+                        <div class="col-6 p-1"><img style="height: 100%;" id="image-details-2" width="100%"
                                 src="https://a0.muscache.com/im/pictures/miso/Hosting-668146487515150072/original/7da9fd6a-8d6c-4954-88b0-1fc52abc9cfd.jpeg?im_w=720"
                                 alt="" /></div>
-                        <div class="col-6 p-1"><img id="image-details-3" width="100%"
+                        <div class="col-6 p-1"><img style="height: 100%;" id="image-details-3" width="100%"
                                 src="https://a0.muscache.com/im/pictures/miso/Hosting-668146487515150072/original/7da9fd6a-8d6c-4954-88b0-1fc52abc9cfd.jpeg?im_w=720"
                                 alt="" /></div>
                     </div>
                     <div class="row">
-                        <div class="col-6 p-1"><img id="image-details-4" width="100%"
+                        <div class="col-6 p-1"><img style="height: 100%;" id="image-details-4" width="100%"
                                 src="https://a0.muscache.com/im/pictures/miso/Hosting-668146487515150072/original/7da9fd6a-8d6c-4954-88b0-1fc52abc9cfd.jpeg?im_w=720"
                                 alt="" /></div>
-                        <div class="col-6 p-1"><img id="image-details-5" width="100%"
+                        <div class="col-6 p-1"><img style="height: 100%;" id="image-details-5" width="100%"
                                 src="https://a0.muscache.com/im/pictures/miso/Hosting-668146487515150072/original/7da9fd6a-8d6c-4954-88b0-1fc52abc9cfd.jpeg?im_w=720"
                                 alt="" /></div>
                     </div>
@@ -107,7 +98,7 @@
                 <div class="border p-3 position-sticky top-0 rounded">
                     <strong id="total-price" class="fs-2">$ 439</strong>
                     <p>Tổng trước thuế</p>
-                    <form action="">
+                    <form id="form-order" action="">
                         <div class="d-flex gap-3 flex-column flex-md-row justify-content-md-center">
                             <div>
                                 <label for="begin-date">Nhận phòng</label>
@@ -119,7 +110,7 @@
                             </div>
                         </div>
                         <div>
-                            <div class="btn-group w-100 mt-3 ">
+                            <div class="btn-group w-100 mt-3 chooose-customer ">
                                 <button type="button" class="btn border dropdown-toggle" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     1 khách
@@ -132,7 +123,7 @@
                                         </div>
                                         <div>
                                             <button
-                                                class="disabled px-3 btn border rounded-circle btn-light subtraction">-</button>
+                                                class="px-3 btn border rounded-circle btn-light subtraction">-</button>
                                             <input disabled type="text" value="1" name="adult" id="adult-input"
                                                 readonly>
                                             <button class="btn border rounded-circle btn-light summation">+</button>
@@ -145,8 +136,8 @@
                                         </div>
                                         <div>
                                             <button
-                                                class="disabled px-3 btn border rounded-circle btn-light subtraction">-</button>
-                                            <input disabled type="text" value="0" name="personnumber" id="person-number"
+                                                class=" px-3 btn border rounded-circle btn-light subtraction">-</button>
+                                            <input disabled type="text" value="0" name="childnumber" id="child-number"
                                                 readonly>
                                             <button class=" btn border rounded-circle btn-light summation">+</button>
                                         </div>
@@ -158,8 +149,8 @@
                                         </div>
                                         <div>
                                             <button
-                                                class="disabled px-3 btn border rounded-circle btn-light subtraction">-</button>
-                                            <input disabled type="text" value="0" name="personnumber" id="baby-input"
+                                                class="px-3 btn border rounded-circle btn-light subtraction">-</button>
+                                            <input disabled type="text" value="0" name="babynumber" id="baby-number"
                                                 readonly>
                                             <button class="btn border rounded-circle btn-light summation">+</button>
                                         </div>
@@ -171,8 +162,8 @@
                                         </div>
                                         <div>
                                             <button
-                                                class="disabled px-3 btn border rounded-circle btn-light subtraction">-</button>
-                                            <input disabled type="text" value="0" name="personnumber" id="pet-input"
+                                                class="px-3 btn border rounded-circle btn-light subtraction">-</button>
+                                            <input disabled type="text" value="0" name="petnumber" id="pet-input"
                                                 readonly>
                                             <button class="btn border rounded-circle btn-light summation">+</button>
                                         </div>
