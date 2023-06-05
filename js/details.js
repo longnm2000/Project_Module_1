@@ -157,7 +157,6 @@ const img5 = document.getElementById("image-details-5");
 // localStorage.setItem("homestays", JSON.stringify(homestays));
 
 let homestays = JSON.parse(localStorage.getItem("homestays"));
-console.log(homestays);
 
 let queryString = location.search;
 let params = new URLSearchParams(queryString);
@@ -173,6 +172,7 @@ if (post) {
   homestayAddress.innerText = post.address;
   homestayUtilities.innerText = `${post.tourists} khách, ${post.bedrooms} phòng ngủ, ${post.bathrooms} phòng tắm`;
   homestayContent.innerText = post.content;
+  totalPrice.innerHTML = `$ ${post.pricePerDay * post.minday}`;
   img1.src = post.images[0];
   img2.src = post.images[1];
   img3.src = post.images[2];

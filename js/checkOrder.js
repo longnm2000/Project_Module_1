@@ -141,7 +141,6 @@ let isZipCodeError = false;
 
 numberCard.addEventListener("blur", () => {
   isValidVisa(numberCard.value);
-  console.log("dwadwadwa");
   console.log(isValidVisa(numberCard.value));
   if (!isValidVisa(numberCard.value)) {
     numberCardError.style.display = "block";
@@ -211,6 +210,7 @@ submitBtn.addEventListener("click", () => {
         cvv: cvv.value,
         zipCode: zipCode.value,
         country: country.value,
+        price: daysDiff * post.pricePerDay,
         isComplete: false,
       };
       console.log(orderedHomestay);

@@ -91,6 +91,8 @@
 
 // localStorage.setItem("users", JSON.stringify(users));
 
+let users = JSON.parse(localStorage.getItem("users"));
+
 const loginForm = document.getElementById("login-form");
 
 loginForm.addEventListener("submit", (e) => {
@@ -125,3 +127,4 @@ loginForm.addEventListener("submit", (e) => {
     });
   }
 });
+console.log(users);
