@@ -203,7 +203,8 @@ submitBtn.addEventListener("click", () => {
         numberCard.value != "" &&
         expiration.value != "" &&
         cvv.value != "" &&
-        zipCode.value != ""
+        zipCode.value != "" &&
+        currentUser.isLogin == true
       ) {
         let orderedHomestay = {
           userId: currentUser.id,
@@ -222,7 +223,7 @@ submitBtn.addEventListener("click", () => {
           price: daysDiff * post.pricePerDay,
           isComplete: false,
         };
-        console.log(orderedHomestay);
+
         orders.push(orderedHomestay);
         localStorage.setItem("orders", JSON.stringify(orders));
         swal({
@@ -233,7 +234,8 @@ submitBtn.addEventListener("click", () => {
         location.href = "/index.html";
       } else {
         swal({
-          title: "Thông tin nhập vào chưa chính xác",
+          title:
+            "Thông tin nhập vào chưa chính xác hoặc tài khoản của bạn đã bị vô hiệu hóa",
           icon: "error",
           timer: 2000,
         });

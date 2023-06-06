@@ -87,5 +87,13 @@ registerForm.addEventListener("submit", (e) => {
     }).then(() => {
       location.href = "/index.html";
     });
+  } else {
+    if (checkDuplicate("email", registerForm.email.value, users)) {
+      swal({
+        title: "Email đã được đăng ký rồi",
+        icon: "warning",
+        timer: 2000,
+      });
+    }
   }
 });
