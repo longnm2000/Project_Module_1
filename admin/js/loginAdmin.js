@@ -1,11 +1,9 @@
 const admin = JSON.parse(localStorage.getItem("admin"));
-console.log(admin);
 
 const loginForm = document.getElementById("login-form");
-
+console.log(loginForm.name);
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
   if (
     admin.email === loginForm.email.value &&
     admin.password === loginForm.password.value
@@ -17,7 +15,7 @@ loginForm.addEventListener("submit", (e) => {
       icon: "success",
       timer: 2000,
     }).then(() => {
-      location.href = "/admin.html";
+      location.href = "/admin/index.html";
     });
   } else {
     swal({
