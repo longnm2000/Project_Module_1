@@ -257,18 +257,21 @@ const titleError = document.querySelector(".title-error");
 const typeRegex = /^[a-z\-]+$/g;
 
 if (admin.isLogin == true) {
-  categories.forEach((category) => {
-    categoryInfo.innerHTML += `
-          <tr>
-              <td>${category.id}</td>
-              <td>${category.title}</td>
-              <td>${category.typeCategory}</td>
-              <td><img width="96px" src="${category.image}"></td>
-          </tr>
-        
-        `;
-  });
-
+  function renderData() {
+    categoryInfo.innerHTML = "";
+    categories.forEach((category) => {
+      categoryInfo.innerHTML += `
+            <tr>
+                <td>${category.id}</td>
+                <td>${category.title}</td>
+                <td>${category.typeCategory}</td>
+                <td><img width="96px" src="${category.image}"></td>
+            </tr>
+          
+          `;
+    });
+  }
+  renderData();
   function checkImage(link) {
     const imagePattern = /\.(jpeg|jpg|gif|png|bmp)$/i;
 
@@ -279,18 +282,19 @@ if (admin.isLogin == true) {
     return true;
   }
 
+  // Kiểm tra xem phần tử định thêm vào có key bằng với 1 phần tử nào đó trong mảng hay không
+  function checkDuplicate(key, value, arr) {
+    for (let i = 0; i < arr.length; i++) {
+      if (value === arr[i][key]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   AddCategoryForm.addEventListener("submit", (e) => {
     let errors = 0;
     e.preventDefault();
-    console.log(typeCategory.value, typeRegex.test(typeCategory.value));
-    if (typeRegex.test(typeCategory.value) == false) {
-      typeError.style.display = "block";
-      typeError.textContent = "Loại chỉ chứa chữ thường và dấu -";
-      errors++;
-    } else {
-      typeError.style.display = "none";
-    }
-
     if (checkImage(imagesCategory.value) == false) {
       imagesError.style.display = "block";
       imagesError.textContent = "Có link không phải link hình ảnh";
@@ -305,7 +309,41 @@ if (admin.isLogin == true) {
     } else {
       titleError.style.display = "none";
     }
+
+    if (typeRegex.test(typeCategory.value) == true) {
+      console.log(typeRegex.test(typeCategory.value) == true);
+      typeError.style.display = "none";
+    }
+    if (typeRegex.test(typeCategory.value) == false) {
+      typeError.style.display = "block";
+      typeError.textContent = "Chỉ chứa chữ thường và -";
+      errors++;
+    }
     if (errors == 0) {
+      let newCategoryId = Math.floor(Math.random() * 1000000000);
+      while (checkDuplicate("id", newCategoryId, categories)) {
+        randomId = Math.floor(Math.random() * 1000000000);
+      }
+      typeCategory.value = "";
+      titleCategory.value = "";
+      imagesCategory.value = "";
+
+      let newCategory = {
+        id: newCategoryId,
+        typeCategory: typeCategory.value,
+        image: imagesCategory.value,
+        title: titleCategory.value,
+      };
+      console.log(newCategory);
+      categories.push(newCategory);
+      console.log(categories);
+      renderData();
+      console.log(categoryInfo);
+      swal({
+        title: "Success",
+        icon: "success",
+        timer: 2000,
+      });
     }
   });
 }
