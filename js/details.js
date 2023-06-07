@@ -304,14 +304,22 @@ formOrder.addEventListener("submit", (e) => {
   }
   console.log(errors);
   if (errors == 0) {
-    if (currentUser.isLogin == false) {
+    if (!!currentUser) {
+      if (currentUser.isLogin == false) {
+        swal({
+          title: "Tài khoản của bạn đã bị khóa",
+          icon: "error",
+          timer: 2000,
+        });
+      } else {
+        location.href = `/checkOrder.html?homestay_id=${id}&check_in=${formOrder.begindate.value}&check_out=${formOrder.enddate.value}&adults=${person.value}&childrens=${child.value}&babys=${baby.value}&pets=${petInput.value}`;
+      }
+    } else {
       swal({
-        title: "Tài khoản của bạn đã bị khóa",
+        title: "Bạn cần đăng nhập để đặt phòng",
         icon: "error",
         timer: 2000,
       });
-    } else {
-      location.href = `/checkOrder.html?homestay_id=${id}&check_in=${formOrder.begindate.value}&check_out=${formOrder.enddate.value}&adults=${person.value}&childrens=${child.value}&babys=${baby.value}&pets=${petInput.value}`;
     }
   }
 });

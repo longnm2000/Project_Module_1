@@ -221,7 +221,7 @@ submitBtn.addEventListener("click", () => {
           zipCode: zipCode.value,
           country: country.value,
           price: daysDiff * post.pricePerDay,
-          isComplete: false,
+          isComplete: true,
         };
 
         orders.unshift(orderedHomestay);
@@ -230,16 +230,15 @@ submitBtn.addEventListener("click", () => {
           title: "Bạn đã đặt phòng thành công! Tự động chuyển về trang chủ",
           icon: "success",
           timer: 3000,
+        }).then(() => {
+          location.href = "/index.html";
         });
-        location.href = "/index.html";
       } else {
         swal({
           title:
             "Thông tin nhập vào chưa chính xác hoặc tài khoản của bạn đã bị vô hiệu hóa",
           icon: "error",
           timer: 2000,
-        }).then(() => {
-          location.href = "/index.html";
         });
       }
     }

@@ -10,54 +10,66 @@ let orders = JSON.parse(localStorage.getItem("orders")) || [];
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 let personalOrders = orders.filter((e) => {
-  return e.userId === currentUser.id && e.isComplete == false;
+  return e.userId === currentUser.id;
 });
-
 personalOrders.forEach((e) => {
   let foundHomestay = homestays.find((homestay) => {
     return homestay.id === e.homestayId;
   });
+  let status = "";
+  let isDisable = "";
+  if (e.isComplete) {
+    status = "Đã đặt phòng";
+  } else {
+    status = "Đã bị hủy";
+    isDisable = "disabled";
+  }
 
   personalOrderBox.innerHTML += `
             <tr>
+                <td>${foundHomestay.id}</td>
                 <td>${foundHomestay.name}</td>
+                <td>${foundHomestay.address}</td>
                 <td>${e.checkIn}</td>
                 <td>${e.checkOut}</td>
                 <td>${e.adults}</td>
                 <td>${e.childrens}</td>
                 <td>${e.babys}</td>
                 <td>${e.pets}</td>
+                <td>${e.cardNumber}</td>
+                <td>${e.country}</td>
                 <td>${e.price}</td>
+                <td class="status">${status}</td>
+                <td><button ${isDisable} class="btn btn-primary cancel-btn">Hủy đặt phòng</button>
             </tr>
             
 
         `;
 });
 
-let personalCompleteOrders = orders.filter((e) => {
-  return e.userId === currentUser.id && e.isComplete === true;
-});
+// let personalCompleteOrders = orders.filter((e) => {
+//   return e.userId === currentUser.id && e.isComplete === true;
+// });
 
-personalCompleteOrders.forEach((e) => {
-  let foundCompleteHomestay = homestays.find((homestay) => {
-    return homestay.id === e.homestayId;
-  });
+// personalCompleteOrders.forEach((e) => {
+//   let foundCompleteHomestay = homestays.find((homestay) => {
+//     return homestay.id === e.homestayId;
+//   });
 
-  personalCompleteOrderBox.innerHTML += `
-              <tr>
-                  <td>${foundCompleteHomestay.name}</td>
-                  <td>${e.checkIn}</td>
-                  <td>${e.checkOut}</td>
-                  <td>${e.adults}</td>
-                  <td>${e.childrens}</td>
-                  <td>${e.babys}</td>
-                  <td>${e.pets}</td>
-                  <td>${e.price}</td>
-              </tr>
-              
-  
-          `;
-});
+//   personalCompleteOrderBox.innerHTML += `
+//               <tr>
+//                   <td>${foundCompleteHomestay.name}</td>
+//                   <td>${e.checkIn}</td>
+//                   <td>${e.checkOut}</td>
+//                   <td>${e.adults}</td>
+//                   <td>${e.childrens}</td>
+//                   <td>${e.babys}</td>
+//                   <td>${e.pets}</td>
+//                   <td>${e.price}</td>
+//               </tr>
+
+//           `;
+// });
 
 if (currentUser != null) {
   let firstword = currentUser.name.split(" ")[0];
@@ -78,3 +90,23 @@ if (currentUser != null) {
     localStorage.removeItem("currentUser");
   });
 }
+personalOrderBox.addEventListener("click", (e) => {
+  if (e.target.classList.contains("cancel-btn")) {
+    orders.forEach((element) => {
+      if (
+        element.homestayId ==
+          e.target.parentElement.parentElement.querySelector("td")
+            .textContent &&
+        element.userId == currentUser.id
+      ) {
+        element.isComplete = false;
+        e.target.parentElement.parentElement.querySelector(
+          ".status"
+        ).textContent = "Đã bị hủy";
+        e.target.disabled = true;
+      }
+    });
+    console.log(orders);
+    localStorage.setItem("orders", JSON.stringify(orders));
+  }
+});

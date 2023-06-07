@@ -4,7 +4,7 @@ let categories = JSON.parse(localStorage.getItem("categories"));
 const addCategoryForm = document.getElementById("add-category-form");
 const typeError = document.querySelector(".type-error");
 const titleError = document.querySelector(".title-error");
-const imageError = document.querySelector(".image-error");
+const imageError = document.querySelector(".images-error");
 const titleDropdown = document.getElementById("title-drop-down");
 
 // Kiểm tra xem phần tử định thêm vào có key bằng với 1 phần tử nào đó trong mảng hay không
@@ -17,14 +17,11 @@ function checkDuplicate(key, value, arr) {
   return false;
 }
 
-function checkImage(link) {
-  const imagePattern = /\.(jpeg|jpg|gif|png|bmp)$/i;
-
-  if (!imagePattern.test(link)) {
-    return false;
-  }
-
-  return true;
+function checkKeyValue(key, value, categories) {
+  let same = categories.find((e) => {
+    return e[key] == value;
+  });
+  return !!same;
 }
 
 const titleRegex = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/;
@@ -55,24 +52,61 @@ if (admin.isLogin == true) {
       titleError.style.display = "none";
     }
     if (typeRegex.test(addCategoryForm.type.value) == false) {
+      console.log(addCategoryForm.type.value);
       typeError.style.display = "block";
       typeError.textContent = `Chỉ chứa chữ thường và dấu "-", dấu "-" không đứng ở đầu và cuối, không có nhiều dấu "-" ở cạnh nhau`;
       errors++;
     } else {
       typeError.style.display = "none";
     }
-    if (imageRegex.test(addCategoryForm.type.value) == false) {
+    if (imageRegex.test(addCategoryForm.image.value) == false) {
       imageError.style.display = "block";
-      imageError.textContent = `Chỉ chứa chữ thường và dấu "-", dấu "-" không đứng ở đầu và cuối, không có nhiều dấu "-" ở cạnh nhau`;
+      imageError.textContent = `Không phải là ảnh do cuối chuỗi không có đuôi của ảnh`;
+
       errors++;
     } else {
       imageError.style.display = "none";
+    }
+
+    if (
+      !!checkKeyValue("typeCategory", addCategoryForm.type.value, categories)
+    ) {
+      typeError.style.display = "block";
+      typeError.textContent = `Đã có type of category này rồi`;
+      errors++;
+    } else {
+      typeError.style.display = "none";
+    }
+
+    if (
+      !!checkKeyValue("title", addCategoryForm.titleCategory.value, categories)
+    ) {
+      titleError.style.display = "block";
+      titleError.textContent = `Đã có title này rồi`;
+      errors++;
+    } else {
+      titleError.style.display = "none";
     }
     if (errors == 0) {
       let randomId = Math.floor(Math.random() * 1000000000);
       while (checkDuplicate("id", randomId, categories)) {
         randomId = Math.floor(Math.random() * 1000000000);
       }
+
+      let newCategory = {
+        id: randomId,
+        image: addCategoryForm.image.value,
+        title: addCategoryForm.titleCategory.value,
+        typeCategory: addCategoryForm.type.value,
+      };
+      addCategoryForm.reset();
+      categories.unshift(newCategory);
+      localStorage.setItem("categories", JSON.stringify(categories));
+      swal({
+        title: "Thêm thành công",
+        icon: "success",
+        timer: 2000,
+      });
     }
   });
 } else {

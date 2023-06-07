@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Add A New Homestay</title>
+    <title>Update Homestay</title>
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/836/PNG/512/Airbnb_icon-icons.com_66791.png"
         type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
@@ -30,7 +30,6 @@
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
-
             </div>
         </form>
         <!-- Navbar-->
@@ -49,7 +48,6 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
                         <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-gauge" style="color: #ffffff;"></i>
                             </div>
@@ -93,64 +91,21 @@
 
 
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Add A New Homestay</h1>
+                    <h1 class="mt-4">Update Homestay</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="homestayInfo.html">Homestays Infomation</a></li>
-                        <li class="breadcrumb-item active">Add A New Homestay</li>
+                        <li class="breadcrumb-item"><a href="homestayInfo.html">Homestays</a></li>
+                        <li class="breadcrumb-item active">Update Homestay</li>
                     </ol>
 
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            Add A New Homestay
+                            Update Homestay
                         </div>
                         <div class="card-body">
-                            <form action="" id="add-homestay">
-                                <label class="form-label mt-3" for="homestay-name">Homestay Name</label>
-                                <input class="form-control" type="text" name="name" id="homestay-name">
-                                <p role="alert" class=" alert alert-danger name-error mt-1 hide-error-box"></p>
-
-                                <label class="form-label mt-3" for="homestay-owner">Homestay Owner</label>
-                                <input class="form-control" type="text" name="owner" id="homestay-owner">
-                                <p role="alert" class=" alert alert-danger owner-error mt-1 hide-error-box"></p>
-
-                                <label class="form-label mt-3" for="homestay-address">Homestay Address</label>
-                                <input class="form-control" type="text" name="address" id="homestay-address">
-                                <p role="alert" class=" alert alert-danger address-error mt-1 hide-error-box"></p>
-
-                                <label class="form-label mt-3">Homestay Types</label>
-                                <div id="homestay-type-box"></div>
-                                <p role="alert" class=" alert alert-danger types-error mt-1 hide-error-box"></p>
-
-                                <label class="form-label mt-3" for="homestay-tourists">Homestay Tourists</label>
-                                <input class="form-control" type="text" name="tourists" id="homestay-tourists">
-                                <p role="alert" class=" alert alert-danger tourists-error mt-1 hide-error-box"></p>
-
-                                <label class="form-label mt-3" for="homestay-babys">Homestay Babys</label>
-                                <input class="form-control" type="text" name="babys" id="homestay-babys">
-                                <p role="alert" class=" alert alert-danger babys-error mt-1 hide-error-box"></p>
-
-                                <label class="form-label mt-3" for="homestay-pets">Homestay Pets</label>
-                                <input class="form-control" type="text" name="pets" id="homestay-pets">
-                                <p role="alert" class=" alert alert-danger pets-error mt-1 hide-error-box"></p>
-
-                                <label class="form-label mt-3" for="homestay-bedrooms">Homestay Bedrooms</label>
-                                <input class="form-control" type="text" name="bedrooms" id="homestay-bedrooms">
-                                <p role="alert" class=" alert alert-danger bedrooms-error mt-1 hide-error-box"></p>
-
-                                <label class="form-label mt-3" for="homestay-bathroom">Homestay Bathroom</label>
-                                <input class="form-control" type="text" name="bathrooms" id="homestay-bathroom">
-                                <p role="alert" class=" alert alert-danger bathrooms-error mt-1 hide-error-box"></p>
-
-                                <label class="form-label mt-3" for="homestay-minday">Minimum number of nights
-                                    booked</label>
-                                <input class="form-control" type="text" name="minday" id="homestay-minday">
-                                <p role="alert" class=" alert alert-danger minday-error mt-1 hide-error-box"></p>
-
-                                <label class="form-label mt-3" for="price-per-night">Price Per Night</label>
-                                <input class="form-control" type="text" name="pricePerNight" id="price-per-night">
-                                <p role="alert" class=" alert alert-danger price-error mt-1 hide-error-box"></p>
+                            <form action="" id="update-homestay">
+                                <h2>Chỉ cho phép cập nhât ảnh và miêu tả</h2>
 
                                 <label class="form-label mt-3" for="homestay-images">Homestay Images</label>
                                 <input class="form-control" type="text" name="images" id="homestay-images">
@@ -160,7 +115,7 @@
                                 <input class="form-control" type="text" name="content" id="homestay-content">
                                 <p role="alert" class=" alert alert-danger content-error mt-1 hide-error-box"></p>
 
-                                <button class="btn btn-primary mt-3">Add</button>
+                                <button class="btn btn-primary mt-3">Update</button>
                             </form>
 
                         </div>
@@ -178,7 +133,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
         integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/addHomestay.js"></script>
+    <script src="js/updateHomestay.js"></script>
 </body>
 
 </html>

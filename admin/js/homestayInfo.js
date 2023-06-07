@@ -31,9 +31,14 @@ if (admin.isLogin == true) {
           <td>${homestay.minday}</td>
           <td>${homestay.pricePerDay}</td>
           <td>
-          <button type="button" class="show-modal-box-btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          View
-          </button>
+
+              <button title="View" type="button" class="mb-2 show-modal-box-btn btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+              </button>
+              <button class="btn btn-primary update-btn"  >
+              <i class="fa-solid fa-pen-nib"></i>
+              </button>
+
   
           </td>
       </tr>
@@ -41,10 +46,10 @@ if (admin.isLogin == true) {
   });
 
   datatablesSimple.addEventListener("click", (e) => {
+    let selectId =
+      e.target.parentElement.parentElement.querySelector("td").textContent;
+    let foundHomestay = homestays.find((e) => e.id == selectId);
     if (e.target.classList.contains("show-modal-box-btn")) {
-      let selectId =
-        e.target.parentElement.parentElement.querySelector("td").textContent;
-      let foundHomestay = homestays.find((e) => e.id == selectId);
       if (!!foundHomestay) {
         let images = "";
         foundHomestay.images.forEach((img) => {
@@ -71,6 +76,9 @@ if (admin.isLogin == true) {
     </ul>
         `;
       }
+    }
+    if (e.target.classList.contains("update-btn")) {
+      location.href = `/admin/updateHomestay.html?homestayId=${foundHomestay.id}`;
     }
   });
 

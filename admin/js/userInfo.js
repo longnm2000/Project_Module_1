@@ -36,9 +36,9 @@ if (admin.isLogin == true) {
       <td>${user.email}</td>
       <td>${user.phone}</td>
       <td>
-        <select style="width:250px" class=" form-select form-select-sm state-login" aria-label=".form-select-lg example">
-        <option class="option-select" ${result1} value="true">Allow</option>
-        <option class="option-select" ${result2} value="false">Deny</option>
+        <select class=" form-select form-select-sm state-login" aria-label=".form-select-lg example">
+        <option class="option-select" ${result1} value="true">&#x2714;</option>
+        <option class="option-select" ${result2} value="false">&#x2716;</option>
     </select>
       </td>
     </tr>
