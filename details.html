@@ -57,7 +57,28 @@
     <main class="container py-5">
         <h2 id="homestay-name"></h2>
         <p id="homestay-address"></p>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <section class="image-box">
+            <!-- Button trigger modal -->
+            <button id="show-images" type="button" class="btn btn-light btn-outline-dark " data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                <i class="fa-solid fa-list-ul"></i> Hiển thị tất cả hình ảnh
+            </button>
             <div class="row">
                 <div class="col-12 col-md-6 p-1">
                     <img style="height: 100%;" id="image-details-1" width="100%" style="object-fit: cover;" src=""
@@ -91,7 +112,9 @@
             <div>
                 <div class="border p-3 position-sticky top-0 rounded">
                     <strong id="total-price" class="fs-2"></strong>
-                    <p>Tổng trước thuế</p>
+                    <p class="fw-bold fs-4">Tổng trước thuế</p>
+                    <p class="fw-bold fs-5" id="price-per-night"></p>
+                    <p class="fw-bold fs-5" id="min-day"></p>
                     <form id="form-order" action="">
                         <div class="d-flex gap-3 flex-column flex-md-row justify-content-md-center">
                             <div>
@@ -105,8 +128,8 @@
                         </div>
                         <div>
                             <div class="btn-group w-100 mt-3 chooose-customer ">
-                                <button type="button" class="btn border dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                <button id="select-number" type="button" class="btn border dropdown-toggle"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     1 khách
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end w-100 select-customer number-buttons">

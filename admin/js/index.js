@@ -10,5 +10,8 @@ if (admin.isLogin == true) {
   logout.addEventListener("click", () => {
     admin.isLogin = false;
     localStorage.setItem("admin", JSON.stringify(admin));
+    logOut.textContent = "Logout";
   });
+} else {
+  location.href = "/admin/login.html";
 }

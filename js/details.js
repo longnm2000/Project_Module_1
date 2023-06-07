@@ -5,6 +5,7 @@ const petInput = document.getElementById("pet-input");
 const child = document.getElementById("child-number");
 const formOrder = document.getElementById("form-order");
 const titleWeb = document.getElementsByTagName("title")[0];
+const selectNumber = document.getElementById("select-number");
 
 const titleDropdown = document.getElementById("title-drop-down");
 const menuContent = document.getElementById("dropdown-menu-content");
@@ -20,6 +21,11 @@ const img2 = document.getElementById("image-details-2");
 const img3 = document.getElementById("image-details-3");
 const img4 = document.getElementById("image-details-4");
 const img5 = document.getElementById("image-details-5");
+const modalBody = document.querySelector(".modal-body");
+const pricePerNight = document.getElementById("price-per-night");
+const minDay = document.getElementById("min-day");
+
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 // const homestays = [
 //   {
@@ -174,7 +180,7 @@ if (post) {
   homestayName.innerText = post.name;
   homestayOwner.innerText = `Chủ homestay: ${post.owner}`;
   homestayAddress.innerText = post.address;
-  homestayUtilities.innerText = `${post.tourists} khách, ${post.bedrooms} phòng ngủ, ${post.bathrooms} phòng tắm`;
+  homestayUtilities.innerText = `${post.tourists} người lớn và trẻ em, ${post.babys} em bé, ${post.pets} thú cưng, ${post.bedrooms} phòng ngủ, ${post.bathrooms} phòng tắm`;
   homestayContent.innerText = post.content;
   totalPrice.innerHTML = `$ ${post.pricePerDay * post.minday}`;
   titleWeb.innerHTML = `${post.name}`;
@@ -183,6 +189,13 @@ if (post) {
   img3.src = post.images[2];
   img4.src = post.images[3];
   img5.src = post.images[4];
+  post.images.forEach((image) => {
+    modalBody.innerHTML += `
+      <img src = "${image}" class = "w-100 my-3" style="height:auto">
+    `;
+  });
+  pricePerNight.innerText = `$ ${post.pricePerDay} / 1 đêm`;
+  minDay.innerText = `Ít nhất ${post.minday} đêm`;
 }
 
 if (post.pets == 0) {
@@ -231,6 +244,8 @@ numberBtns.addEventListener("click", (e) => {
       inputElement.value = +inputElement.value + 1;
     }
   }
+  let finalTourists = `${person.value} người lớn, ${child.value} trẻ em, ${baby.value} em bé, ${petInput.value} thú cưng`;
+  selectNumber.textContent = finalTourists;
 });
 
 let today = new Date();
@@ -289,7 +304,15 @@ formOrder.addEventListener("submit", (e) => {
   }
   console.log(errors);
   if (errors == 0) {
-    location.href = `/checkOrder.html?homestay_id=${id}&check_in=${formOrder.begindate.value}&check_out=${formOrder.enddate.value}&adults=${person.value}&childrens=${child.value}&babys=${baby.value}&pets=${petInput.value}`;
+    if (currentUser.isLogin == false) {
+      swal({
+        title: "Tài khoản của bạn đã bị khóa",
+        icon: "error",
+        timer: 2000,
+      });
+    } else {
+      location.href = `/checkOrder.html?homestay_id=${id}&check_in=${formOrder.begindate.value}&check_out=${formOrder.enddate.value}&adults=${person.value}&childrens=${child.value}&babys=${baby.value}&pets=${petInput.value}`;
+    }
   }
 });
 
@@ -306,8 +329,6 @@ formOrder.addEventListener("change", (e) => {
   let daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
   totalPrice.textContent = `$ ${daysDiff * post.pricePerDay}`;
 });
-
-let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 if (currentUser != null) {
   let firstword = currentUser.name.split(" ")[0];

@@ -91,7 +91,7 @@
 
 // localStorage.setItem("users", JSON.stringify(users));
 
-let users = JSON.parse(localStorage.getItem("users"));
+let users = JSON.parse(localStorage.getItem("users")) || [];
 
 const loginForm = document.getElementById("login-form");
 

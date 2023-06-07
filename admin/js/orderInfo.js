@@ -31,17 +31,22 @@ if (admin.isLogin == true) {
     }
     userInfo.innerHTML += `
     <tr>
-      <td>${user.id}</td>
-      <td>${user.name}</td>
-      <td>${user.email}</td>
-      <td>${user.phone}</td>
-      <td>
-        <select style="width:250px" class=" form-select form-select-sm state-login" aria-label=".form-select-lg example">
-        <option class="option-select" ${result1} value="true">Allow</option>
-        <option class="option-select" ${result2} value="false">Deny</option>
-    </select>
-      </td>
-    </tr>
+                                        <th>User Id</th>
+                                        <th>Homestay Id</th>
+                                        <th>Check In</th>
+                                        <th>Check Out</th>
+                                        <th>Adults</th>
+                                        <th>Children</th>
+                                        <th>Baby</th>
+                                        <th>pets</th>
+                                        <th>Card Number</th>
+                                        <th>Expiration</th>
+                                        <th>CVV</th>
+                                        <th>Zip Code</th>
+                                        <th>Country</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                    </tr>
     `;
   });
 

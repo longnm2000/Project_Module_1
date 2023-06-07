@@ -241,109 +241,45 @@
 
 // localStorage.setItem("categories", JSON.stringify(categories));
 let admin = JSON.parse(localStorage.getItem("admin"));
-let categories = JSON.parse(localStorage.getItem("categories"));
+let categories = JSON.parse(localStorage.getItem("categories")) || [];
 
 const categoryInfo = document.getElementById("category-info");
 const datatablesSimple = document.getElementById("datatablesSimple");
+const titleDropdown = document.querySelector("#title-drop-down");
+
+const logOut = document.querySelector("#log-out");
+
+function renderData() {
+  categoryInfo.innerHTML = "";
+  categories.forEach((category) => {
+    categoryInfo.innerHTML += `
+          <tr>
+              <td>${category.id}</td>
+              <td>${category.title}</td>
+              <td>${category.typeCategory}</td>
+              <td><img width="96px" src="${category.image}"></td>
+          </tr>
+        
+        `;
+  });
+}
 
 const AddCategoryForm = document.getElementById("add-category-form");
-const titleCategory = document.getElementById("title-category");
-const typeCategory = document.getElementById("type-category");
-const imagesCategory = document.querySelector("#images-category");
-const typeError = document.querySelector(".type-error");
-const imagesError = document.querySelector(".images-error");
-const titleError = document.querySelector(".title-error");
-
-const typeRegex = /^[a-z\-]+$/g;
 
 if (admin.isLogin == true) {
-  function renderData() {
-    categoryInfo.innerHTML = "";
-    categories.forEach((category) => {
-      categoryInfo.innerHTML += `
-            <tr>
-                <td>${category.id}</td>
-                <td>${category.title}</td>
-                <td>${category.typeCategory}</td>
-                <td><img width="96px" src="${category.image}"></td>
-            </tr>
-          
-          `;
-    });
-  }
-  renderData();
-  function checkImage(link) {
-    const imagePattern = /\.(jpeg|jpg|gif|png|bmp)$/i;
+  //Hiển thị tên  admin
+  let firstword = admin.name.split(" ")[0];
+  titleDropdown.innerHTML = `<i class="fa-solid fa-user me-2" style="color: #ffffff;"></i> ${firstword}`;
 
-    if (!imagePattern.test(link)) {
-      return false;
-    }
-
-    return true;
-  }
-
-  // Kiểm tra xem phần tử định thêm vào có key bằng với 1 phần tử nào đó trong mảng hay không
-  function checkDuplicate(key, value, arr) {
-    for (let i = 0; i < arr.length; i++) {
-      if (value === arr[i][key]) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  AddCategoryForm.addEventListener("submit", (e) => {
-    let errors = 0;
-    e.preventDefault();
-    if (checkImage(imagesCategory.value) == false) {
-      imagesError.style.display = "block";
-      imagesError.textContent = "Có link không phải link hình ảnh";
-      errors++;
-    } else {
-      imagesError.style.display = "none";
-    }
-    if (titleCategory.value == "") {
-      titleError.style.display = "block";
-      titleError.textContent = "Không được để trống";
-      errors++;
-    } else {
-      titleError.style.display = "none";
-    }
-
-    if (typeRegex.test(typeCategory.value) == true) {
-      console.log(typeRegex.test(typeCategory.value) == true);
-      typeError.style.display = "none";
-    }
-    if (typeRegex.test(typeCategory.value) == false) {
-      typeError.style.display = "block";
-      typeError.textContent = "Chỉ chứa chữ thường và -";
-      errors++;
-    }
-    if (errors == 0) {
-      let newCategoryId = Math.floor(Math.random() * 1000000000);
-      while (checkDuplicate("id", newCategoryId, categories)) {
-        randomId = Math.floor(Math.random() * 1000000000);
-      }
-      typeCategory.value = "";
-      titleCategory.value = "";
-      imagesCategory.value = "";
-
-      let newCategory = {
-        id: newCategoryId,
-        typeCategory: typeCategory.value,
-        image: imagesCategory.value,
-        title: titleCategory.value,
-      };
-      console.log(newCategory);
-      categories.push(newCategory);
-      console.log(categories);
-      renderData();
-      console.log(categoryInfo);
-      swal({
-        title: "Success",
-        icon: "success",
-        timer: 2000,
-      });
-    }
+  //Chức năng đăng xuất admin
+  const logout = document.getElementById("log-out");
+  logout.addEventListener("click", () => {
+    admin.isLogin = false;
+    localStorage.setItem("admin", JSON.stringify(admin));
+    logOut.textContent = "Logout";
   });
+
+  renderData();
+} else {
+  location.href = "/admin/login.html";
 }

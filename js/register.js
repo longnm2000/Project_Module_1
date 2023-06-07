@@ -5,7 +5,7 @@ const phoneErrorMsg = document.querySelector(".phone-error");
 const passwordErrorMsg = document.querySelector(".password-error");
 const repasswordErrorMsg = document.querySelector(".repassword-error");
 
-let users = JSON.parse(localStorage.getItem("users"));
+let users = JSON.parse(localStorage.getItem("users")) || [];
 
 const nameRegex = /^[a-zA-Z\s]+$/;
 const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

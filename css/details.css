@@ -69,3 +69,14 @@ footer {
 .dropdown-toggle::after {
     content: none !important;
 }
+
+
+.image-box {
+    position: relative;
+}
+
+#show-images {
+    position: absolute;
+    bottom: 15px;
+    right: 5px;
+}

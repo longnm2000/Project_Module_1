@@ -21,7 +21,7 @@ const countryError = document.getElementById("country-error");
 
 let homestays = JSON.parse(localStorage.getItem("homestays"));
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-let orders = JSON.parse(localStorage.getItem("orders"));
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
 // Lấy URL từ địa chỉ hiện tại
 var url = window.location.href;
@@ -224,7 +224,7 @@ submitBtn.addEventListener("click", () => {
           isComplete: false,
         };
 
-        orders.push(orderedHomestay);
+        orders.unshift(orderedHomestay);
         localStorage.setItem("orders", JSON.stringify(orders));
         swal({
           title: "Bạn đã đặt phòng thành công! Tự động chuyển về trang chủ",
@@ -238,6 +238,8 @@ submitBtn.addEventListener("click", () => {
             "Thông tin nhập vào chưa chính xác hoặc tài khoản của bạn đã bị vô hiệu hóa",
           icon: "error",
           timer: 2000,
+        }).then(() => {
+          location.href = "/index.html";
         });
       }
     }

@@ -43,9 +43,10 @@ header ul li:last-child {
 
 .category img {
     width: 30px !important;
-    height: auto;
+    height: 30px !important;
     display: block;
     margin: auto;
+    object-fit: cover;
 }
 
 .category {
