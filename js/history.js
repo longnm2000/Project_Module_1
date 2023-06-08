@@ -5,7 +5,7 @@ const personalCompleteOrderBox = document.getElementById(
 const titleDropdown = document.getElementById("title-drop-down");
 const menuContent = document.getElementById("dropdown-menu-content");
 
-const homestays = JSON.parse(localStorage.getItem("homestays"));
+const homestays = JSON.parse(localStorage.getItem("homestays")) || [];
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 

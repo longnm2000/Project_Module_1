@@ -1,5 +1,5 @@
 let admin = JSON.parse(localStorage.getItem("admin"));
-let homestays = JSON.parse(localStorage.getItem("homestays"));
+let homestays = JSON.parse(localStorage.getItem("homestays")) || [];
 
 const homestayInfo = document.getElementById("homestay-info");
 const modalBodyBox = document.getElementById("modal-body-box");

@@ -1,5 +1,5 @@
 let admin = JSON.parse(localStorage.getItem("admin"));
-let users = JSON.parse(localStorage.getItem("users"));
+let users = JSON.parse(localStorage.getItem("users")) || [];
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 const userInfo = document.getElementById("user-info");
 const titleDropdown = document.getElementById("title-drop-down");

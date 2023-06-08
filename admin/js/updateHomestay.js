@@ -1,6 +1,6 @@
 const admin = JSON.parse(localStorage.getItem("admin"));
 let homestays = JSON.parse(localStorage.getItem("homestays")) || [];
-const categories = JSON.parse(localStorage.getItem("categories"));
+const categories = JSON.parse(localStorage.getItem("categories")) || [];
 
 const titleDropdown = document.getElementById("title-drop-down");
 const updateForm = document.getElementById("update-homestay");

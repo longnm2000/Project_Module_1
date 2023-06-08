@@ -19,7 +19,7 @@ const cvvError = document.getElementById("cvv-error");
 const zipCodeError = document.getElementById("zip-code-error");
 const countryError = document.getElementById("country-error");
 
-let homestays = JSON.parse(localStorage.getItem("homestays"));
+let homestays = JSON.parse(localStorage.getItem("homestays")) || [];
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
 

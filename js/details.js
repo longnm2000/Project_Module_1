@@ -166,7 +166,7 @@ let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 // localStorage.setItem("homestays", JSON.stringify(homestays));
 
-let homestays = JSON.parse(localStorage.getItem("homestays"));
+let homestays = JSON.parse(localStorage.getItem("homestays")) || [];
 
 let queryString = location.search;
 let params = new URLSearchParams(queryString);

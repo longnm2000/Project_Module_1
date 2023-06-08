@@ -1,5 +1,5 @@
 const admin = JSON.parse(localStorage.getItem("admin"));
-let categories = JSON.parse(localStorage.getItem("categories"));
+let categories = JSON.parse(localStorage.getItem("categories")) || [];
 
 const addCategoryForm = document.getElementById("add-category-form");
 const typeError = document.querySelector(".type-error");
