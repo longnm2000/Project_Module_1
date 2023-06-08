@@ -33,10 +33,10 @@ if (admin.isLogin == true) {
           <td>
 
               <button title="View" type="button" class="mb-2 show-modal-box-btn btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+                View
               </button>
               <button class="btn btn-primary update-btn"  >
-              <i class="fa-solid fa-pen-nib"></i>
+              Update
               </button>
 
   
@@ -46,6 +46,7 @@ if (admin.isLogin == true) {
   });
 
   datatablesSimple.addEventListener("click", (e) => {
+    console.log(e.target);
     let selectId =
       e.target.parentElement.parentElement.querySelector("td").textContent;
     let foundHomestay = homestays.find((e) => e.id == selectId);

@@ -15,8 +15,6 @@ let url = new URL(window.location.href);
 // Lấy giá trị homestayId từ tham số truy vấn (query parameter)
 let homestayId = url.searchParams.get("homestayId");
 
-console.log(homestayId);
-
 function checkDuplicate(key, value, arr) {
   for (let i = 0; i < arr.length; i++) {
     if (value === arr[i][key]) {
@@ -38,6 +36,15 @@ if (admin.isLogin == true) {
     localStorage.setItem("admin", JSON.stringify(admin));
     logout.textContent = "Login";
   });
+
+  let findUpdateHomestay = homestays.find((e) => {
+    return e.id == homestayId;
+  });
+
+  if (!!findUpdateHomestay) {
+    updateForm.content.value = findUpdateHomestay.content;
+    updateForm.images.value = findUpdateHomestay.images.join(",");
+  }
 
   updateForm.addEventListener("submit", (e) => {
     e.preventDefault();
