@@ -55,10 +55,10 @@ if (admin.isLogin == true) {
                                         </td>
                                     </tr>
     `;
-    const optionFalse = document.getElementById("option-false");
-    if (result2 != "") {
-      optionFalse.disabled = true;
-    }
+    // const optionFalse = document.getElementById("option-false");
+    // if (result2 != "") {
+    //   optionFalse.disabled = true;
+    // }
   });
 
   datatablesSimple.addEventListener("click", (e) => {
@@ -84,7 +84,7 @@ if (admin.isLogin == true) {
           }
         }
       });
-      localStorage.setItem("orders", orders);
+      localStorage.setItem("orders", JSON.stringify(orders));
     }
   });
 } else {
