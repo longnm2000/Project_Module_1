@@ -1,5 +1,5 @@
-let homestays = JSON.parse(localStorage.getItem("homestays"));
-const categories = JSON.parse(localStorage.getItem("categories"));
+let homestays = JSON.parse(localStorage.getItem("homestays")) || [];
+const categories = JSON.parse(localStorage.getItem("categories")) || [];
 
 const homestayBox = document.querySelector(".all-homestays");
 // const categoryItem = document.querySelectorAll(".category-item");

@@ -7,7 +7,7 @@ profileForm.name.value = currentUser.name;
 profileForm.email.value = currentUser.email;
 profileForm.number.value = currentUser.phone;
 
-if (currentUser != null) {
+if (!!currentUser) {
   let firstword = currentUser.name.split(" ")[0];
   titleDropdown.innerHTML = `<i class="fa-solid fa-bars me-3"></i> Hi ${firstword}`;
   menuContent.innerHTML = `
