@@ -54,6 +54,7 @@ if (admin.isLogin == true) {
         if (user.id == selectedUser.id) {
           if (e.target.value == "true") {
             user.isLogin = true;
+            currentUser.isLogin = true;
           } else {
             user.isLogin = false;
             if (!!currentUser == true) {
@@ -65,9 +66,8 @@ if (admin.isLogin == true) {
         }
       });
       localStorage.setItem("users", JSON.stringify(users));
-      if (!!currentUser) {
-        localStorage.setItem("currentUser", JSON.stringify(currentUser));
-      }
+      console.log(currentUser);
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
     }
   });
 } else {

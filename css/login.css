@@ -65,3 +65,8 @@ footer {
 .dropdown-toggle::after {
     content: none !important;
 }
+
+.form-label::after {
+    content: " *";
+    color: red;
+}

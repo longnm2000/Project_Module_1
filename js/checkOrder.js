@@ -19,8 +19,8 @@ const cvvError = document.getElementById("cvv-error");
 const zipCodeError = document.getElementById("zip-code-error");
 const countryError = document.getElementById("country-error");
 
-let homestays = JSON.parse(localStorage.getItem("homestays")) || [];
-let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+const homestays = JSON.parse(localStorage.getItem("homestays")) || [];
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
 // Lấy URL từ địa chỉ hiện tại
@@ -95,6 +95,16 @@ function isValidVisa(cardNumber) {
     return false;
   }
 }
+
+function checkDuplicate(key, value, arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (value === arr[i][key]) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function validateVisaExpiration(expiration) {
   let regex = /^(0[1-9]|1[0-2])\/([2-9][0-9])$/;
   let isValidFormat = regex.test(expiration);
@@ -138,76 +148,62 @@ numberCard.addEventListener("keydown", (event) => {
   }
 });
 
-let isnumberCardError = false;
-let isExpirationError = false;
-let isCvvError = false;
-let isZipCodeError = false;
-
-numberCard.addEventListener("blur", () => {
-  isValidVisa(numberCard.value);
-  console.log(isValidVisa(numberCard.value));
+submitBtn.addEventListener("click", () => {
+  let errors = 0;
   if (!isValidVisa(numberCard.value)) {
     numberCardError.style.display = "block";
     numberCardError.textContent = "Mã số thẻ gồm 12 chữ số bắt đầu bằng 4";
-    isnumberCardError = true;
+    errors++;
   } else {
     numberCardError.style.display = "none";
-    isnumberCardError = false;
   }
-});
-
-expiration.addEventListener("blur", () => {
-  console.log(validateVisaExpiration(expiration.value));
+  console.log(errors);
   if (!validateVisaExpiration(expiration.value)) {
     expirationError.style.display = "block";
     expirationError.textContent = "Ngày hết hạn không hợp lệ";
-    isExpirationError = true;
+    errors++;
   } else {
     expirationError.style.display = "none";
-    isExpirationError = false;
   }
-});
+  console.log(errors);
 
-cvv.addEventListener("blur", () => {
   if (!validateVisaCVV(cvv.value)) {
     cvvError.style.display = "block";
     cvvError.textContent = "CVV phải gồm 3 chữ số";
-    isCvvError = true;
+    errors++;
   } else {
     cvvError.style.display = "none";
-    isCvvError = false;
   }
-});
-
-zipCode.addEventListener("blur", () => {
+  console.log(errors);
   if (!validateVisaZipCode(zipCode.value)) {
     zipCodeError.style.display = "block";
     zipCodeError.textContent = "Mã bưu chính phải gồm 6 chữ số";
+    errors++;
   } else {
     zipCodeError.style.display = "none";
   }
-});
+  console.log(errors);
+  if (country.value.trim() == "") {
+    console.log("Dwadw", country.value.trim(), "Dwadwa");
+    countryError.textContent = "Không được để trống";
+    countryError.style.display = "block";
+    errors++;
+  } else {
+    countryError.style.display = "none";
+  }
+  console.log(errors);
+  const currentUser2 = JSON.parse(localStorage.getItem("currentUser"));
 
-submitBtn.addEventListener("click", () => {
-  if (currentUser != null) {
-    if (country.value == "") {
-      countryError.textContent = "Không được để trống";
-      countryError.style.display = "block";
-    } else {
-      countryError.style.display = "none";
-      if (
-        !isnumberCardError &&
-        !isCvvError &&
-        !isExpirationError &&
-        !isZipCodeError &&
-        numberCard.value != "" &&
-        expiration.value != "" &&
-        cvv.value != "" &&
-        zipCode.value != "" &&
-        currentUser.isLogin == true
-      ) {
+  if (errors == 0) {
+    if (!!currentUser2) {
+      if (currentUser2.isLogin == true) {
+        let randomId = Math.floor(Math.random() * 1000000000);
+        while (checkDuplicate("orderId", randomId, orders)) {
+          randomId = Math.floor(Math.random() * 1000000000);
+        }
         let orderedHomestay = {
-          userId: currentUser.id,
+          orderId: randomId,
+          userId: currentUser2.id,
           homestayId: post.id,
           checkIn: keyValuePairs["check_in"],
           checkOut: keyValuePairs["check_out"],
@@ -223,7 +219,7 @@ submitBtn.addEventListener("click", () => {
           price: daysDiff * post.pricePerDay,
           isComplete: true,
         };
-
+        console.log(orderedHomestay);
         orders.unshift(orderedHomestay);
         localStorage.setItem("orders", JSON.stringify(orders));
         swal({
@@ -235,16 +231,22 @@ submitBtn.addEventListener("click", () => {
         });
       } else {
         swal({
-          title:
-            "Thông tin nhập vào chưa chính xác hoặc tài khoản của bạn đã bị vô hiệu hóa",
+          title: "Tài khoản của bạn đã bị khóa",
           icon: "error",
           timer: 2000,
         });
       }
+    } else {
+      console.log("dwadwadawd");
+      swal({
+        title: "Bạn cần đăng nhập để có thể đặt phòng",
+        icon: "warning",
+        timer: 2000,
+      });
     }
   } else {
     swal({
-      title: "Bạn cần đăng nhập để có thể đặt phòng",
+      title: "Vẫn còn lỗi",
       icon: "warning",
       timer: 2000,
     });

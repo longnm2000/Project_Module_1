@@ -65,3 +65,16 @@ footer {
 .dropdown-toggle::after {
     content: none !important;
 }
+
+.modal-body .form-label::after {
+    content: " *";
+    color: red;
+}
+
+.name-error,
+.email-error,
+.phone-error,
+.password-error,
+.repassword-error {
+    display: none;
+}

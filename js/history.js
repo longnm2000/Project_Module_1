@@ -6,7 +6,7 @@ const titleDropdown = document.getElementById("title-drop-down");
 const menuContent = document.getElementById("dropdown-menu-content");
 
 const homestays = JSON.parse(localStorage.getItem("homestays")) || [];
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
+const orders = JSON.parse(localStorage.getItem("orders")) || [];
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 let personalOrders = orders.filter((e) => {
@@ -27,6 +27,7 @@ personalOrders.forEach((e) => {
 
   personalOrderBox.innerHTML += `
             <tr>
+                <td>${e.orderId}</td>
                 <td>${foundHomestay.id}</td>
                 <td>${foundHomestay.name}</td>
                 <td>${foundHomestay.address}</td>
@@ -94,19 +95,28 @@ personalOrderBox.addEventListener("click", (e) => {
   if (e.target.classList.contains("cancel-btn")) {
     orders.forEach((element) => {
       if (
-        element.homestayId ==
+        element.orderId ==
           e.target.parentElement.parentElement.querySelector("td")
             .textContent &&
-        element.userId == currentUser.id
+        element.isComplete == true
       ) {
-        element.isComplete = false;
-        e.target.parentElement.parentElement.querySelector(
-          ".status"
-        ).textContent = "Đã bị hủy";
-        e.target.disabled = true;
+        let isConfirm = confirm("Bạn có muốn hủy đặt phòng không?");
+        if (isConfirm) {
+          element.isComplete = false;
+          e.target.parentElement.parentElement.querySelector(
+            ".status"
+          ).textContent = "Đã bị hủy";
+          e.target.disabled = true;
+          swal({
+            title: "Đã hủy thành công!",
+            icon: "success",
+            timer: 2000,
+          });
+        } else {
+          console.log("Dwadwa");
+        }
       }
     });
-    console.log(orders);
     localStorage.setItem("orders", JSON.stringify(orders));
   }
 });

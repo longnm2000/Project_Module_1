@@ -53,12 +53,52 @@
         </nav>
     </header>
     <main>
+        <section>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                            <button id="show-modal" type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="update-form" class="d-flex flex-column g-3">
+
+                                <div class="input-box d-flex flex-column mb-3">
+                                    <label class="form-label" for="name-user">Họ tên:</label>
+                                    <input type="text" name="name" id="name-user" class="form-control mb-2" />
+                                    <p role="alert" class=" alert alert-danger name-error"></p>
+                                </div>
+
+                                <div class="input-box d-flex flex-column mb-3">
+                                    <label class="form-label" for="phone-user">Phone:</label>
+                                    <input type="text" name="phone" id="phone-user" class="form-control mb-2" />
+                                    <p role="alert" class="alert alert-danger phone-error"></p>
+                                </div>
+
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="close-btn" type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Close</button>
+                            <button id="update-btn" type="button" class="btn btn-primary ">Cập nhật</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="container d-flex justify-content-center my-5">
             <div class="col-12 col-sm-10 col-md-9 col-xl-6 p-4 border border-secondary-subtle rounded-3">
-                <h3 class="text-center">Thông tin các nhân của bạn</h3>
+                <h3 class="text-center">Thông tin cá nhân của bạn</h3>
                 <form id="profile-form" class="d-flex flex-column g-3">
                     <div class="input-box d-flex flex-column mb-3">
-                        <label class="form-label" for="user-name">Email:</label>
+                        <label class="form-label" for="user-name">Họ tên:</label>
                         <input readonly type="text" name="name" id="user-name" class="form-control" />
                     </div>
                     <div class="input-box d-flex flex-column mb-3">
@@ -70,7 +110,10 @@
                         <input readonly type="text" name="number" id="user-number" class="form-control" />
                     </div>
                 </form>
-
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Sửa thông tin
+                </button>
             </div>
         </section>
     </main>

@@ -70,3 +70,8 @@ footer {
 .repassword-error {
     display: none;
 }
+
+.form-label::after {
+    content: " *";
+    color: red;
+}

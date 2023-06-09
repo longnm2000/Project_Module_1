@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Users Infomation</title>
+    <title>Orders Infomation</title>
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/836/PNG/512/Airbnb_icon-icons.com_66791.png"
         type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
@@ -73,7 +73,7 @@
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-user" style="color: #ffffff;"></i></div>
                             User Infomation
                         </a>
-                        <a class="nav-link" href="orderInfo.html">
+                        <a class="nav-link active" href="orderInfo.html">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-folder" style="color: #ffffff;"></i>
                             </div>
                             Order Infomation
@@ -88,6 +88,28 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div id="modal-body-box" class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Orders Infomation </h1>
                     <ol class="breadcrumb mb-4">
@@ -103,40 +125,29 @@
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
+                                        <th>Order Id</th>
                                         <th>User Id</th>
                                         <th>Homestay Id</th>
                                         <th>Check In</th>
                                         <th>Check Out</th>
-                                        <th>Adults</th>
-                                        <th>Children</th>
-                                        <th>Baby</th>
-                                        <th>pets</th>
                                         <th>Card Number</th>
-                                        <th>Expiration</th>
-                                        <th>CVV</th>
-                                        <th>Zip Code</th>
                                         <th>Country</th>
-                                        <th>Price</th>
+                                        <th>Price ($)</th>
                                         <th>Status</th>
+                                        <th>Details</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
+                                        <th>Order Id</th>
                                         <th>User Id</th>
                                         <th>Homestay Id</th>
                                         <th>Check In</th>
                                         <th>Check Out</th>
-                                        <th>Adults</th>
-                                        <th>Children</th>
-                                        <th>Baby</th>
-                                        <th>Pets</th>
-                                        <th>Card Number</th>
-                                        <th>Expiration</th>
-                                        <th>CVV</th>
-                                        <th>Zip Code</th>
                                         <th>Country</th>
                                         <th>Price</th>
                                         <th>Status</th>
+                                        <th>Details</th>
                                     </tr>
                                 </tfoot>
                                 <tbody id="order-info">
@@ -157,6 +168,9 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/orderInfo.js"></script>
 </body>
 

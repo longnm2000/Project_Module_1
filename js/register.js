@@ -7,7 +7,7 @@ const repasswordErrorMsg = document.querySelector(".repassword-error");
 
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
-const nameRegex = /^[a-zA-Z\s]+$/;
+const nameRegex = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
 const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const phoneRegex = /^\d{10}$/;
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
@@ -25,14 +25,14 @@ function checkDuplicate(key, value, arr) {
 registerForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let errors = 0;
-  if (!nameRegex.test(registerForm.name.value)) {
-    nameErrorMsg.textContent = `Họ tên chỉ chứa chữ cái và dấu cách`;
+  if (!nameRegex.test(registerForm.name.value.trim())) {
+    nameErrorMsg.textContent = `Họ tên không hợp lệ`;
     nameErrorMsg.style.display = "block";
     errors++;
   } else {
     nameErrorMsg.style.display = "none";
   }
-  if (!emailRegex.test(registerForm.email.value)) {
+  if (!emailRegex.test(registerForm.email.value.trim())) {
     emailErrorMsg.textContent = `Email không hợp lệ`;
     emailErrorMsg.style.display = "block";
     errors++;
@@ -71,13 +71,13 @@ registerForm.addEventListener("submit", (e) => {
     }
     let newUser = {
       id: randomId,
-      name: registerForm.name.value,
-      email: registerForm.email.value,
+      name: registerForm.name.value.trim(),
+      email: registerForm.email.value.trim(),
       phone: registerForm.phone.value,
       password: registerForm.password.value,
       isLogin: true,
     };
-    users.push(newUser);
+    users.unshift(newUser);
     localStorage.setItem("currentUser", JSON.stringify(newUser));
     localStorage.setItem("users", JSON.stringify(users));
     swal({
