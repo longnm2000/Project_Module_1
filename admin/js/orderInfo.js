@@ -99,7 +99,7 @@ if (admin.isLogin == true) {
           exampleModalLabel.textContent = "Details";
           modalBodyBox.innerHTML = `
             <ul>
-            <li><b>User Id:</b> <br>${findOrder.orderId}</li>
+            <li><b>Order Id:</b> <br>${findOrder.orderId}</li>
             <li><b>User Id:</b> <br>${findOrder.userId}</li>
             <li><b>Homestay Id:</b> <br>${findOrder.homestayId}</li>
             <li><b>Check In:</b> <br>${findOrder.checkIn}</li>
