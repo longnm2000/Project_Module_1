@@ -54,10 +54,12 @@ if (admin.isLogin == true) {
         if (user.id == selectedUser.id) {
           if (e.target.value == "true") {
             user.isLogin = true;
-            currentUser.isLogin = true;
+            if (!!currentUser) {
+              currentUser.isLogin = true;
+            }
           } else {
             user.isLogin = false;
-            if (!!currentUser == true) {
+            if (!!currentUser) {
               if (user.id == currentUser.id) {
                 currentUser.isLogin = false;
               }
