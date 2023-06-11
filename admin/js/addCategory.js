@@ -24,7 +24,6 @@ function checkKeyValue(key, value, categories) {
   return !!same;
 }
 
-const titleRegex = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/;
 const typeRegex = /^[a-z]+(-[a-z]+)*$/;
 const imageRegex = /\.(jpg|jpeg|png|gif|bmp)$/i;
 
@@ -40,19 +39,20 @@ if (admin.isLogin == true) {
     localStorage.setItem("admin", JSON.stringify(admin));
     logout.textContent = "Login";
   });
-
+  console.log(typeError, titleError);
   addCategoryForm.addEventListener("submit", (e) => {
+    console.log(titleError);
     e.preventDefault();
     let errors = 0;
-    if (titleRegex.test(addCategoryForm.titleCategory.value) == false) {
+    if (addCategoryForm.titleCategory.value.trim() == "") {
       titleError.style.display = "block";
-      titleError.textContent = `Chỉ chứa chữ và dấu cách, dấu cách không đứng ở đầu và cuối, không có nhiều dấu cách ở cạnh nhau`;
+      titleError.textContent = `Không để trống`;
       errors++;
     } else {
       titleError.style.display = "none";
+      titleError.textContent = "";
     }
     if (typeRegex.test(addCategoryForm.type.value) == false) {
-      console.log(addCategoryForm.type.value);
       typeError.style.display = "block";
       typeError.textContent = `Chỉ chứa chữ thường và dấu "-", dấu "-" không đứng ở đầu và cuối, không có nhiều dấu "-" ở cạnh nhau`;
       errors++;
@@ -62,30 +62,37 @@ if (admin.isLogin == true) {
     if (imageRegex.test(addCategoryForm.image.value) == false) {
       imageError.style.display = "block";
       imageError.textContent = `Không phải là ảnh do cuối chuỗi không có đuôi của ảnh`;
-
       errors++;
     } else {
       imageError.style.display = "none";
     }
 
     if (
-      !!checkKeyValue("typeCategory", addCategoryForm.type.value, categories)
+      !!checkKeyValue(
+        "typeCategory",
+        addCategoryForm.type.value.trim(),
+        categories
+      )
     ) {
       typeError.style.display = "block";
       typeError.textContent = `Đã có type of category này rồi`;
       errors++;
     } else {
-      typeError.style.display = "none";
+      // typeError.style.display = "none";
     }
 
     if (
-      !!checkKeyValue("title", addCategoryForm.titleCategory.value, categories)
+      !!checkKeyValue(
+        "title",
+        addCategoryForm.titleCategory.value.trim(),
+        categories
+      )
     ) {
       titleError.style.display = "block";
       titleError.textContent = `Đã có title này rồi`;
       errors++;
     } else {
-      titleError.style.display = "none";
+      // titleError.style.display = "none";
     }
     if (errors == 0) {
       let randomId = Math.floor(Math.random() * 1000000000);
@@ -95,9 +102,9 @@ if (admin.isLogin == true) {
 
       let newCategory = {
         id: randomId,
-        image: addCategoryForm.image.value,
-        title: addCategoryForm.titleCategory.value,
-        typeCategory: addCategoryForm.type.value,
+        image: addCategoryForm.image.value.trim(),
+        title: addCategoryForm.titleCategory.value.trim(),
+        typeCategory: addCategoryForm.type.value.trim(),
       };
       addCategoryForm.reset();
       categories.unshift(newCategory);

@@ -10,19 +10,18 @@ const orders = JSON.parse(localStorage.getItem("orders")) || [];
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 let personalOrders = orders.filter((e) => {
-  return e.userId === currentUser.id;
+  return e.userId === currentUser.id && e.isComplete == true;
 });
 personalOrders.forEach((e) => {
   let foundHomestay = homestays.find((homestay) => {
     return homestay.id === e.homestayId;
   });
   let status = "";
-  let isDisable = "";
+
   if (e.isComplete) {
     status = "Đã đặt phòng";
   } else {
     status = "Đã bị hủy";
-    isDisable = "disabled";
   }
 
   personalOrderBox.innerHTML += `
@@ -41,36 +40,42 @@ personalOrders.forEach((e) => {
                 <td>${e.country}</td>
                 <td>${e.price}</td>
                 <td class="status">${status}</td>
-                <td><button ${isDisable} class="btn btn-primary cancel-btn">Hủy đặt phòng</button>
+                <td><button class="btn btn-danger cancel-btn">Hủy đặt phòng</button>
             </tr>
             
 
         `;
 });
 
-// let personalCompleteOrders = orders.filter((e) => {
-//   return e.userId === currentUser.id && e.isComplete === true;
-// });
+let personalCompleteOrders = orders.filter((e) => {
+  return e.userId === currentUser.id && e.isComplete === false;
+});
 
-// personalCompleteOrders.forEach((e) => {
-//   let foundCompleteHomestay = homestays.find((homestay) => {
-//     return homestay.id === e.homestayId;
-//   });
+personalCompleteOrders.forEach((e) => {
+  let foundCompleteHomestay = homestays.find((homestay) => {
+    return homestay.id === e.homestayId;
+  });
 
-//   personalCompleteOrderBox.innerHTML += `
-//               <tr>
-//                   <td>${foundCompleteHomestay.name}</td>
-//                   <td>${e.checkIn}</td>
-//                   <td>${e.checkOut}</td>
-//                   <td>${e.adults}</td>
-//                   <td>${e.childrens}</td>
-//                   <td>${e.babys}</td>
-//                   <td>${e.pets}</td>
-//                   <td>${e.price}</td>
-//               </tr>
+  personalCompleteOrderBox.innerHTML += `
+              <tr>
+              <td>${e.orderId}</td>
+              <td>${foundCompleteHomestay.id}</td>
+              <td>${foundCompleteHomestay.name}</td>
+              <td>${foundCompleteHomestay.address}</td>
+              <td>${e.checkIn}</td>
+              <td>${e.checkOut}</td>
+              <td>${e.adults}</td>
+              <td>${e.childrens}</td>
+              <td>${e.babys}</td>
+              <td>${e.pets}</td>
+              <td>${e.cardNumber}</td>
+              <td>${e.country}</td>
+              <td>${e.price}</td>
+              
+              </tr>
 
-//           `;
-// });
+          `;
+});
 
 if (currentUser != null) {
   let firstword = currentUser.name.split(" ")[0];
@@ -111,9 +116,9 @@ personalOrderBox.addEventListener("click", (e) => {
             title: "Đã hủy thành công!",
             icon: "success",
             timer: 2000,
+          }).then(() => {
+            location.href = "/history.html";
           });
-        } else {
-          console.log("Dwadwa");
         }
       }
     });

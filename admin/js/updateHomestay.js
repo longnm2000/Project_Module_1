@@ -15,15 +15,6 @@ let url = new URL(window.location.href);
 // Lấy giá trị homestayId từ tham số truy vấn (query parameter)
 let homestayId = url.searchParams.get("homestayId");
 
-function checkDuplicate(key, value, arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (value === arr[i][key]) {
-      return true;
-    }
-  }
-  return false;
-}
-
 if (admin.isLogin == true) {
   //Hiển thị tên  admin
   let firstword = admin.name.split(" ")[0];
@@ -82,8 +73,9 @@ if (admin.isLogin == true) {
         title: "Đã cập nhật thành công",
         icon: "success",
         timer: 2000,
+      }).then(() => {
+        location.href = "/admin/homestayInfo.html";
       });
-      updateForm.reset();
     }
   });
 } else {

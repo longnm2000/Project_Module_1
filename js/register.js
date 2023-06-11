@@ -26,7 +26,7 @@ registerForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let errors = 0;
   if (!nameRegex.test(registerForm.name.value.trim())) {
-    nameErrorMsg.textContent = `Họ tên không hợp lệ`;
+    nameErrorMsg.textContent = `Họ tên chỉ chứa chữ cái và khoảng trắng,không có nhiều các khoảng trắng liên tiếp giữa các chữ cái`;
     nameErrorMsg.style.display = "block";
     errors++;
   } else {

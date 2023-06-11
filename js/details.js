@@ -30,6 +30,8 @@ const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 const homestays = JSON.parse(localStorage.getItem("homestays")) || [];
 
+const orders = JSON.parse(localStorage.getItem("orders"));
+
 let queryString = location.search;
 let params = new URLSearchParams(queryString);
 let id = params.get("id");
@@ -179,7 +181,21 @@ formOrder.addEventListener("submit", (e) => {
           timer: 2000,
         });
       } else {
-        location.href = `/checkOrder.html?homestay_id=${id}&check_in=${formOrder.begindate.value}&check_out=${formOrder.enddate.value}&adults=${person.value}&childrens=${child.value}&babys=${baby.value}&pets=${petInput.value}`;
+        let foundCurentUserOrder = orders.find(
+          (e) =>
+            e.userId == currentUser.id &&
+            e.homestayId == id &&
+            e.isComplete == true
+        );
+        if (!!foundCurentUserOrder) {
+          swal({
+            title: "Bạn đã đặt homestay này rồi",
+            icon: "error",
+            timer: 2000,
+          });
+        } else {
+          location.href = `/checkOrder.html?homestay_id=${id}&check_in=${formOrder.begindate.value}&check_out=${formOrder.enddate.value}&adults=${person.value}&childrens=${child.value}&babys=${baby.value}&pets=${petInput.value}`;
+        }
       }
     } else {
       swal({
@@ -219,7 +235,6 @@ if (!!currentUser) {
   
   `;
   const removeCurrent = document.getElementById("remove-current-user");
-  console.log(removeCurrent);
 
   removeCurrent.addEventListener("click", () => {
     localStorage.removeItem("currentUser");

@@ -197,38 +197,53 @@ submitBtn.addEventListener("click", () => {
   if (errors == 0) {
     if (!!currentUser2) {
       if (currentUser2.isLogin == true) {
-        let randomId = Math.floor(Math.random() * 1000000000);
-        while (checkDuplicate("orderId", randomId, orders)) {
-          randomId = Math.floor(Math.random() * 1000000000);
+        let orders1 = JSON.parse(localStorage.getItem("orders"));
+        let foundCurentUserOrder = orders1.find(
+          (e) =>
+            e.userId == currentUser.id &&
+            e.homestayId == keyValuePairs["homestay_id"] &&
+            e.isComplete == true
+        );
+        if (!!foundCurentUserOrder) {
+          swal({
+            title: "Bạn đã đặt homestay này rồi",
+            icon: "error",
+            timer: 2000,
+          });
+        } else {
+          let randomId = Math.floor(Math.random() * 1000000000);
+          while (checkDuplicate("orderId", randomId, orders1)) {
+            randomId = Math.floor(Math.random() * 1000000000);
+          }
+          let orderedHomestay = {
+            orderId: randomId,
+            userId: currentUser2.id,
+            homestayId: post.id,
+            checkIn: keyValuePairs["check_in"],
+            checkOut: keyValuePairs["check_out"],
+            adults: keyValuePairs["adults"],
+            childrens: keyValuePairs["childrens"],
+            babys: keyValuePairs["babys"],
+            pets: keyValuePairs["pets"],
+            cardNumber: numberCard.value,
+            expiration: expiration.value,
+            cvv: cvv.value,
+            zipCode: zipCode.value,
+            country: country.value,
+            price: daysDiff * post.pricePerDay,
+            isComplete: true,
+          };
+          console.log(orderedHomestay);
+          orders1.unshift(orderedHomestay);
+          localStorage.setItem("orders", JSON.stringify(orders1));
+          swal({
+            title: "Bạn đã đặt phòng thành công! Tự động chuyển về trang chủ",
+            icon: "success",
+            timer: 2000,
+          }).then(() => {
+            location.href = "/index.html";
+          });
         }
-        let orderedHomestay = {
-          orderId: randomId,
-          userId: currentUser2.id,
-          homestayId: post.id,
-          checkIn: keyValuePairs["check_in"],
-          checkOut: keyValuePairs["check_out"],
-          adults: keyValuePairs["adults"],
-          childrens: keyValuePairs["childrens"],
-          babys: keyValuePairs["babys"],
-          pets: keyValuePairs["pets"],
-          cardNumber: numberCard.value,
-          expiration: expiration.value,
-          cvv: cvv.value,
-          zipCode: zipCode.value,
-          country: country.value,
-          price: daysDiff * post.pricePerDay,
-          isComplete: true,
-        };
-        console.log(orderedHomestay);
-        orders.unshift(orderedHomestay);
-        localStorage.setItem("orders", JSON.stringify(orders));
-        swal({
-          title: "Bạn đã đặt phòng thành công! Tự động chuyển về trang chủ",
-          icon: "success",
-          timer: 3000,
-        }).then(() => {
-          location.href = "/index.html";
-        });
       } else {
         swal({
           title: "Tài khoản của bạn đã bị khóa",
@@ -252,8 +267,6 @@ submitBtn.addEventListener("click", () => {
     });
   }
 });
-
-// localStorage.setItem("orders", JSON.stringify("[{userId: 1,homestayId:}]"));
 
 if (currentUser != null) {
   let firstword = currentUser.name.split(" ")[0];

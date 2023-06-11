@@ -1,5 +1,6 @@
 let admin = JSON.parse(localStorage.getItem("admin"));
 let homestays = JSON.parse(localStorage.getItem("homestays")) || [];
+const categories = JSON.parse(localStorage.getItem("categories"));
 
 const homestayInfo = document.getElementById("homestay-info");
 const modalBodyBox = document.getElementById("modal-body-box");
@@ -63,7 +64,10 @@ if (admin.isLogin == true) {
         <li><b>Name:</b> <br>${foundHomestay.name}</li>
         <li><b>Owner:</b> <br>${foundHomestay.owner}</li>
         <li><b>Address:</b> <br>${foundHomestay.address}</li>
-        <li><b>Minimum number of nights booked:</b> <br>${foundHomestay.minday}</li>
+        <li><b>Address:</b> <br>${foundHomestay.typeHomestay.join(", ")}</li>
+        <li><b>Minimum number of nights booked:</b> <br>${
+          foundHomestay.minday
+        }</li>
         <li><b>Price Per Day:</b> <br>${foundHomestay.pricePerDay}</li>
         <li><b>Tourists:</b> <br>${foundHomestay.tourists}</li>
         <li><b>Babys:</b> <br>${foundHomestay.babys}</li>
