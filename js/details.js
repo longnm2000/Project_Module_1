@@ -169,6 +169,14 @@ formOrder.addEventListener("submit", (e) => {
 
     errors++;
   }
+  if (person.value == 0) {
+    swal({
+      title: `Khách ít nhất 1 người lớn`,
+      icon: "warning",
+      timer: 2000,
+    });
+    errors++;
+  }
 
   if (errors == 0) {
     const currentUser2 = JSON.parse(localStorage.getItem("currentUser"));
