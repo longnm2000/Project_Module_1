@@ -70,7 +70,10 @@ if (admin.isLogin == true) {
         .textContent;
     let selectedOrder = orders.find((e) => e.orderId == orderId);
     if (!!selectedOrder) {
-      if (e.target.classList.contains("state-login")) {
+      if (
+        e.target.classList.contains("state-login") &&
+        e.target.disabled == false
+      ) {
         orders.forEach((order) => {
           if (
             order.userId == selectedOrder.userId &&

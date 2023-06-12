@@ -70,6 +70,23 @@ if (!!currentUser) {
         localStorage.setItem("users", JSON.stringify(users));
         profileForm.name.value = currentUser.name;
         profileForm.number.value = currentUser.phone;
+        let firstword = currentUser.name.split(" ")[0];
+        titleDropdown.innerHTML = `<i class="fa-solid fa-bars me-3"></i> Hi ${firstword}`;
+        menuContent.innerHTML = `
+  <li id="remove-current-user"><a class="dropdown-item" href="/index.html">Đăng xuất</a></li>
+  <li><a class="dropdown-item" href="/history.html">Lịch sử đặt phòng</a></li>
+  <li><a class="dropdown-item" href="/profile.html">Thông tin cá nhân</a></li>
+  <li>
+      <a class="dropdown-item" href="">Cho thuê chỗ ở qua Airbnb</a>
+  </li>
+  <li><a class="dropdown-item" href="">Trợ giúp</a></li>
+  
+  `;
+        const removeCurrent = document.getElementById("remove-current-user");
+
+        removeCurrent.addEventListener("click", () => {
+          localStorage.removeItem("currentUser");
+        });
         swal({
           title: "Cập nhật thông tin thành công",
           icon: "success",
